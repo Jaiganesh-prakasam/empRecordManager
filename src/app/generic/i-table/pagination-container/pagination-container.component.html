@@ -1,0 +1,15 @@
+<ng-content></ng-content>
+
+<div class="container">
+  <select name="rows" id="rows" (change)="valueChanged($event.target.value)">
+    <option value=5>5</option>
+    <option value=10>10</option>
+    <option value=15>15</option>
+    <option value=20>20</option>
+  </select>
+  <nav class="pagination">
+    <a  >&laquo;</a>
+    <a id={{i}} *ngFor="let i of totalDivisions">{{i}}</a>
+    <a >&raquo;</a>
+  </nav>
+</div>

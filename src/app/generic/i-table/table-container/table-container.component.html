@@ -1,0 +1,12 @@
+<table class ="table-data" *ngIf="settings && tableData">
+  <tr >
+    <th *ngFor="let heading of settings.headers">
+      {{heading}}
+    </th>
+  </tr>
+  <tr *ngFor="let data of tableData | slice:start:end; let i  = index">
+    <td *ngFor="let fieldArray of settings.contentFieldArray">
+      {{getValue(data,fieldArray)}}
+    </td>
+  </tr>
+</table>
