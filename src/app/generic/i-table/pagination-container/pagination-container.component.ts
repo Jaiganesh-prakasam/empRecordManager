@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  AfterViewInit,
+  Output,
+  EventEmitter
+ } from '@angular/core';
 
 @Component({
   selector: 'app-pagination-container',
@@ -9,10 +16,11 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
   @Input()totalRecordsSize: number;
   @Input()numberOfRows: string;
   @Output()itemFromTo = new EventEmitter();
+  @Output()searchString = new EventEmitter();
   totalDivisions;
   pageNumberSelected: number;
+  initialLoad = true;
   constructor() {
-    console.log(this.totalRecordsSize);
    }
 
   ngOnInit(): void {
@@ -23,14 +31,13 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
     this.valueChanged(this.numberOfRows);
   }
 
-  valueChanged(tempNumberOfRows: string) {
+  valueChanged(tempNumberOfRows: string): void {
     this.numberOfRows = tempNumberOfRows;
     this.numberOfButtons(Number(tempNumberOfRows));
     console.log(tempNumberOfRows);
   }
-  numberOfButtons(tempNumberOfRows: number) {
+  numberOfButtons(tempNumberOfRows: number): void {
     if (this.pageNumberSelected) {
-
       document.getElementById(String(this.pageNumberSelected)).classList.remove('active');
     }
     const noOfPges = Math.ceil(this.totalRecordsSize / tempNumberOfRows);
@@ -43,39 +50,59 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
       }, 0);
     }.bind(this), 0);
   }
-  jumpToFirst() {
+  buttonsAfterFilter(totalRecordcount: number) {
+    if (this.pageNumberSelected) {
+      document.getElementById(String(this.pageNumberSelected)).classList.remove('active');
+    }
+    const tempNumberOfRows = (document.getElementById('rows') as HTMLInputElement).value;
+    const noOfPges = Math.ceil(totalRecordcount / Number(tempNumberOfRows));
+    console.log(totalRecordcount);
+    console.log(tempNumberOfRows);
+    console.log(noOfPges);
+    setTimeout(function() {
+      this.totalDivisions = new Array(noOfPges);
+      this.pageNumberSelected = 1;
+      setTimeout(() => {
+       document.getElementById('1').classList.add('active');
+      }, 0);
+    }.bind(this), 0);
+  }
+  jumpToFirst(): void {
     // should stop if it is already in first page
     if (this.pageNumberSelected !== 1) {
       const nextNumber = 1;
       this.jumToThisPage(nextNumber);
     }
   }
-  previous() {
+  previous(): void {
     // should stop if it is already in first page
     if (this.pageNumberSelected !== 1) {
       const nextNumber = this.pageNumberSelected - 1;
       this.jumToThisPage(nextNumber);
     }
   }
-  next(){
+  next(): void{
     // already in last page no action taken
     if (this.pageNumberSelected !== this.totalDivisions.length) {
       const nextNumber = this.pageNumberSelected + 1;
       this.jumToThisPage(nextNumber);
     }
   }
-  jumpToLast() {
+  jumpToLast(): void {
     // already in last page no action taken
     if (this.pageNumberSelected !== this.totalDivisions.length) {
       const nextNumber = this.totalDivisions.length;
       this.jumToThisPage(nextNumber);
     }
   }
-  jumToThisPage(pageNumber: number) {
+  jumToThisPage(pageNumber: number): void {
     document.getElementById(String(this.pageNumberSelected)).classList.remove('active');
     this.pageNumberSelected = pageNumber;
     document.getElementById(String(this.pageNumberSelected)).classList.add('active');
     this.itemFromTo.emit([(pageNumber - 1) * Number(this.numberOfRows), pageNumber * Number(this.numberOfRows)]);
   }
 
+  searchFilter(x) {
+    this.searchString.emit(x);
+  }
 }

@@ -1,10 +1,20 @@
 <div class="container">
+  <section>
+    <label>Search:</label>
+    <input #input (keyup)="searchFilter([input.value, numberOfRows])" >
+  </section>
   <select name="rows" id="rows" (change)="valueChanged($event.target.value)">
     <option value=5>5</option>
     <option value=10>10</option>
     <option value=15>15</option>
     <option value=20>20</option>
   </select>
+</div>
+<ng-content></ng-content>
+<div class="container-bottom">
+  <div>
+
+  </div>
   <nav class="pagination">
     <div (click)="jumpToFirst()" >&laquo;</div>
     <div (click)="previous()">&#8249;</div>
@@ -13,4 +23,3 @@
     <div (click)="jumpToLast()">&raquo;</div>
   </nav>
 </div>
-<ng-content></ng-content>

@@ -2,7 +2,8 @@
   *ngIf="tableData"
   [totalRecordsSize]="tableData.length"
   [numberOfRows]="'5'"
-  (itemFromTo)="arrayRange($event)">
+  (itemFromTo)="arrayRange($event)"
+  (searchString)="filterData($event)">
   <app-table-container [tableData]="tempDataTable" [settings]="settings">
   </app-table-container>
 </app-pagination-container>
