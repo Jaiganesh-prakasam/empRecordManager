@@ -1,11 +1,11 @@
 .container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .pagination {
   display: flex;
   justify-content: flex-end;
-	a {
+	div {
 		color: black;
 		float: left;
 		padding: 8px 16px;

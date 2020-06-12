@@ -1,5 +1,8 @@
-<app-pagination-container [pagnationTotalSize]="tableData" [numberOfRows]="10">
-  <app-table-container [tableData]="tableData" [settings]="settings" [start]="0" [end]="3">
-
+<app-pagination-container
+  *ngIf="tableData"
+  [totalRecordsSize]="tableData.length"
+  [numberOfRows]="'5'"
+  (itemFromTo)="arrayRange($event)">
+  <app-table-container [tableData]="tempDataTable" [settings]="settings">
   </app-table-container>
 </app-pagination-container>

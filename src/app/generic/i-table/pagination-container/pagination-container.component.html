@@ -1,5 +1,3 @@
-<ng-content></ng-content>
-
 <div class="container">
   <select name="rows" id="rows" (change)="valueChanged($event.target.value)">
     <option value=5>5</option>
@@ -8,8 +6,11 @@
     <option value=20>20</option>
   </select>
   <nav class="pagination">
-    <a  >&laquo;</a>
-    <a id={{i}} *ngFor="let i of totalDivisions">{{i}}</a>
-    <a >&raquo;</a>
+    <div (click)="jumpToFirst()" >&laquo;</div>
+    <div (click)="previous()">&#8249;</div>
+    <div id={{i+1}} (click)="jumToThisPage(i+1)" *ngFor="let division of totalDivisions;let i = index">{{i +1}}</div>
+    <div (click)="next()">&#8250;</div>
+    <div (click)="jumpToLast()">&raquo;</div>
   </nav>
 </div>
+<ng-content></ng-content>

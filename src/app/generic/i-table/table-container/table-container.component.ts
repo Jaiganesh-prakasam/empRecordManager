@@ -8,8 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TableContainerComponent implements OnInit {
   @Input() tableData: any;
   @Input() settings: any;
-  @Input() start: number;
-  @Input() end: number;
   constructor() {
     console.log(this.settings);
   }
@@ -17,7 +15,7 @@ export class TableContainerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getValue(data , fieldArray): any | string {
+  getValue(data: object , fieldArray: string[]): any | string {
     // console.log(data, fieldArray);
     const tempfieldArray = [...fieldArray];
     if (data[fieldArray[0]]) {
