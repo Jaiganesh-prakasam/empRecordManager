@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeDetailsService } from '../../employee-details.service';
 import { EmpDetails } from '../../sharedInterface/emp-details';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-emp-list',
   templateUrl: './emp-list.component.html',
@@ -24,7 +25,9 @@ export class EmpListComponent implements OnInit {
       ['empGeneral', 'age']
     ]
   };
-  constructor(private employeeDetailsService: EmployeeDetailsService) {
+  constructor(
+      private employeeDetailsService: EmployeeDetailsService,
+      private router: Router) {
     this.employeeDetailsService.getHeroes()
     .subscribe(heroes => {
       this.employees = heroes;
@@ -33,6 +36,9 @@ export class EmpListComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+  addEmplyee(): void {
+    this.router.navigate(['/routing/emp-details']);
   }
 
 }

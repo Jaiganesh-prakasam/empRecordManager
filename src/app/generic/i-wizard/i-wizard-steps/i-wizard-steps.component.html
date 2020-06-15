@@ -1,0 +1,5 @@
+<ng-content></ng-content>
+
+<button *ngIf="position && position !== 'first'" > Previous </button>
+<button *ngIf="position && position === 'last'" > Submit </button>
+<button *ngIf="position && position !== 'last'" > Next </button>

@@ -16,6 +16,7 @@ const routes: Routes = [
     EmpDetailsComponent
   ],
   imports: [
+    IWizardModule,
     CommonModule,
     RouterModule.forChild(routes),
   ]
