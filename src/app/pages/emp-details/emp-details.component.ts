@@ -23,10 +23,6 @@ export class EmpDetailsComponent implements OnInit {
       id: 'step4',
       visibility: false
     },
-    {
-      id: 'step5',
-      visibility: false
-    },
   ];
   constructor() { }
 

@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { IWizardModule } from '../../generic/i-wizard/i-wizard.module';
 import { EmpDetailsComponent } from './emp-details.component';
+import { EmpGeneralComponent } from './emp-general/emp-general.component';
+import { EmpContactComponent } from './emp-contact/emp-contact.component';
+import { EmpSkillComponent } from './emp-skill/emp-skill.component';
+import { EmpExperienceComponent } from './emp-experience/emp-experience.component';
 const routes: Routes = [
   {
     path: '',
@@ -13,7 +17,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    EmpDetailsComponent
+    EmpDetailsComponent,
+    EmpGeneralComponent,
+    EmpContactComponent,
+    EmpSkillComponent,
+    EmpExperienceComponent
   ],
   imports: [
     IWizardModule,

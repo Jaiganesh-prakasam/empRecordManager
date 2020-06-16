@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -7,13 +7,24 @@ import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
   styleUrls: ['./i-wizard-steps.component.scss']
 })
 export class IWizardStepsComponent implements OnInit, AfterViewInit {
-  @Input() position: string;
+  @Input() isFirst: boolean;
+  @Input() isLast: boolean;
+  @Input() stepName: string;
+  @Output() next = new EventEmitter();
+  @Output() previous = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
   ngAfterViewInit(): void {
-    console.log(this.position);
+    console.log(this.isFirst);
+    console.log(this.isLast);
+  }
+  previousPage() {
+    this.previous.emit();
+  }
+  nextPage() {
+    this.next.emit();
   }
 
 }

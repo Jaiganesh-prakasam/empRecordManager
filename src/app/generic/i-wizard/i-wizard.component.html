@@ -1,7 +1,20 @@
-<ng-content></ng-content>
+<ng-content >
+
+</ng-content>
+<section style="min-width:100%; display: flex; justify-content: flex-end;">
+  <i-wizard-steps
+    id="button-{{ i.id }}"
+    (next)="nextWizard(i.id)"
+    (previous)="previousWizard(i.id)"
+    [stepName]="i.id"
+    *ngFor="let i of tabData; let first = first; let last = last"
+    [isFirst]="first"
+    [isLast]="last" >
+  </i-wizard-steps>
+</section>
 <div class="dot" >
-  <div style="min-width: 20%;" *ngFor="let i of tabData">
-    <div id="b{{ i.id }}" >
+  <div style="min-width: 20%;" *ngFor="let i of tabData" (click)="wizardNavSelector(i.id)">
+    <div id="nav-{{ i.id }}" >
       <div>
         {{i.id}}
       </div>

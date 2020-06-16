@@ -1,7 +1,14 @@
 <i-wizard [selectedStep]="'step1'" [tabData]="stepsData">
-  <i-wizard-steps [position]="'first'" id="step1"></i-wizard-steps>
-  <i-wizard-steps id="step2"></i-wizard-steps>
-  <i-wizard-steps id="step3"></i-wizard-steps>
-  <i-wizard-steps id="step4"></i-wizard-steps>
-  <i-wizard-steps [position]="'last'" id="step5"></i-wizard-steps>
+  <div id="step1">
+    <app-emp-general></app-emp-general>
+  </div>
+  <div id="step2">
+    <app-emp-contact></app-emp-contact>
+  </div>
+  <div id="step3">
+    <app-emp-experience></app-emp-experience>
+  </div>
+  <div id="step4">
+    <app-emp-skill></app-emp-skill>
+  </div>
 </i-wizard>
