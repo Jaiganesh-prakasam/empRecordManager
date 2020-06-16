@@ -1,6 +1,6 @@
-<ng-content >
-
-</ng-content>
+<div style="max-height: 400px; overflow: auto;">
+  <ng-content ></ng-content>
+</div>
 <section style="min-width:100%; display: flex; justify-content: flex-end;">
   <i-wizard-steps
     id="button-{{ i.id }}"
@@ -16,7 +16,7 @@
   <div style="min-width: 20%;" *ngFor="let i of tabData" (click)="wizardNavSelector(i.id)">
     <div id="nav-{{ i.id }}" >
       <div>
-        {{i.id}}
+        {{i.title}}
       </div>
     </div>
   </div>

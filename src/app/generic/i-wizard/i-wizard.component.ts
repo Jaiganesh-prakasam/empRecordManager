@@ -33,7 +33,7 @@ export class IWizardComponent implements OnInit, AfterViewInit {
         buttonSelected = true;
         continue;
       } else {
-        console.log(i);
+        // console.log(i);
         contentElement.style.display = 'none';
         buttonElement.style.display = 'none';
       }

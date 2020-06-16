@@ -17,8 +17,8 @@ export class IWizardStepsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
   ngAfterViewInit(): void {
-    console.log(this.isFirst);
-    console.log(this.isLast);
+    // console.log(this.isFirst);
+    // console.log(this.isLast);
   }
   previousPage() {
     this.previous.emit();

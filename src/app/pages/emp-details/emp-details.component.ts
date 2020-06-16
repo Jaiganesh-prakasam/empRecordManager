@@ -9,19 +9,19 @@ export class EmpDetailsComponent implements OnInit {
   stepsData = [
     {
       id: 'step1',
-      visibility: true
+      title: 'Employee General Details'
     },
     {
       id: 'step2',
-      visibility: false
+      title: 'Contact'
     },
     {
       id: 'step3',
-      visibility: false
+      title: 'Experience'
     },
     {
       id: 'step4',
-      visibility: false
+      title: 'Skills'
     },
   ];
   constructor() { }
