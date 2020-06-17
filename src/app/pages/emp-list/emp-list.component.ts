@@ -39,6 +39,7 @@ export class EmpListComponent implements OnInit {
   }
   addEmplyee(): void {
     this.router.navigate(['/routing/emp-details']);
+
   }
 
 }

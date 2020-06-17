@@ -1,14 +1,17 @@
 <div class="container">
   <section>
     <label>Search:</label>
-    <input #input (keyup)="searchFilter([input.value, numberOfRows])" >
+    <input #input type="text" (keyup)="searchFilter([input.value, numberOfRows])" >
   </section>
-  <select name="rows" id="rows" (change)="valueChanged($event.target.value)">
-    <option value=5>5</option>
-    <option value=10>10</option>
-    <option value=15>15</option>
-    <option value=20>20</option>
-  </select>
+  <section>
+  <label>Number of records:</label>
+    <select name="rows" id="rows" (change)="valueChanged($event.target.value)">
+      <option value=5>5</option>
+      <option value=10>10</option>
+      <option value=15>15</option>
+      <option value=20>20</option>
+    </select>
+  </section>
 </div>
 <ng-content></ng-content>
 <div class="container-bottom">

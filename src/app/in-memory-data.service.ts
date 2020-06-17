@@ -9,6 +9,7 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const employees = [
       {
+        id: 1,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -45,7 +46,7 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: 3
           },
           {
             companyName: 'abc2',
@@ -57,11 +58,12 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
+            experience: 2
           }
         ]
       },
       {
+        id: 2,
         empGeneral: {
           firstName: 'Vincent',
           lastName: 'Board',
@@ -115,6 +117,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 3,
         empGeneral: {
           firstName: 'Rtosh',
           lastName: 'Tailor',
@@ -168,6 +171,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 4,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -221,6 +225,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 5,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -274,6 +279,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 17,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -327,6 +333,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 6,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -380,6 +387,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 7,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -433,6 +441,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 8,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -486,6 +495,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 9,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -539,6 +549,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 10,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -592,6 +603,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 11,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -645,6 +657,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 12,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -698,6 +711,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 13,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -751,6 +765,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 14,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -804,6 +819,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 15,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -857,6 +873,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ]
       },
       {
+        id: 16,
         empGeneral: {
           firstName: 'John Doe',
           lastName: 'Tailor',
@@ -918,7 +935,8 @@ export class InMemoryDataService implements InMemoryDbService {
   // the method below returns the initial number (11).
   // if the heroes array is not empty, the method below returns the highest
   // hero id + 1.
-  // genId(heroes: EmpDetails[]): number {
-  //   // return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
-  // }
+  genId(heroes: EmpDetails[]): number {
+    console.log(heroes.map(hero => hero.id) );
+    return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
+  }
 }

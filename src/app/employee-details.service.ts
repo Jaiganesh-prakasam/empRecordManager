@@ -8,6 +8,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class EmployeeDetailsService {
   private heroesUrl = 'api/employees';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
   constructor(  private http: HttpClient) { }
   /** GET heroes from the server */
   getHeroes(): Observable<EmpDetails[]> {
@@ -24,6 +27,13 @@ export class EmployeeDetailsService {
     );
   }
 
+  /** POST: add a new hero to the server */
+  addHero(employee: EmpDetails): Observable<EmpDetails> {
+    return this.http.post<EmpDetails>(this.heroesUrl, employee, this.httpOptions).pipe(
+      tap((newEmployee: EmpDetails) => console.log(`added hero w/ id=${newEmployee.empGeneral}`)),
+      catchError(this.handleError<EmpDetails>('addHero'))
+    );
+  }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

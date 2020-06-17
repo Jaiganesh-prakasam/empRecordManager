@@ -1,4 +1,5 @@
 export interface EmpDetails {
+  id: number;
   empGeneral: EmpGeneral;
   empContact: EmpContact;
   empSkill: EmpSkill[];
@@ -24,7 +25,7 @@ export interface EmpContact {
 
 export interface EmpSkill {
   skill: string;
-  rate: string;
+  rate: number;
 }
 
 export interface EmpExperience {

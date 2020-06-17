@@ -1,7 +1,10 @@
 .container {
-  display: flex;
-  justify-content: space-between;
   margin: 4px;
+  display: flex;
+  section {
+    width: 95%;
+    margin: 2px;
+  }
 }
 .pagination {
   display: flex;
