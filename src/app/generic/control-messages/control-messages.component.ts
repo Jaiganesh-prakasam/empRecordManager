@@ -3,7 +3,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/internal/observable';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { ValidationService } from '../../validation.service';
-import { element } from 'protractor';
 @Component({
   // tslint:disable-next-line: component-selector
   selector: 'control-messages',
@@ -12,15 +11,24 @@ import { element } from 'protractor';
 })
 export class ControlMessagesComponent implements OnInit, OnDestroy {
   errors = new Set<string>();
+  errorObject = new Object();
   private sub: Subscription;
   @Input() set control(con: FormControl) {
 
     this.sub = con.statusChanges.subscribe((value) => {
       if (con.errors) {
 
+
+        // con.errors.map((x) => console.log(x));
+        for (const [key, value1] of Object.entries(con.errors)) {
+          console.log(key + ':' + value1);
+          console.log(value1);
+          this.errorObject[key] = value1;
+        }
         const validationErrors = Object.keys(con.errors);
         validationErrors.forEach(element => {
           this.errors.add(element);
+          console.log(element);
         });
 
         this.errors.forEach(element => {
@@ -36,8 +44,8 @@ export class ControlMessagesComponent implements OnInit, OnDestroy {
       else {
         this.errors.clear(); // when the control has no errors then clear the internal errors set too
       }
-      console.log(this.errors);
-      console.log(element);
+
+      console.log(con);
     });
   }
     constructor(public errorMessageService: ValidationService) { }

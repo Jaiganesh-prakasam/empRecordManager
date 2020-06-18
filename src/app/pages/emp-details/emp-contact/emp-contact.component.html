@@ -1,22 +1,43 @@
 <h1>
   Contacts
 </h1>
-<form>
+<form [formGroup]="empContact">
   <label>
     Email:
   </label>
-  <input type="text" >
+  <input type="text" formControlName="email">
+  <control-messages [control]="empContact.get('email')"></control-messages>
   <label>
     Phone:
   </label>
-  <input type="text" >
-  <label>
-    Url:
-  </label>
-  <input type="text" >
-  <label>
-    type:
-  </label>
-  <input type="text" >
+  <input type="text" formControlName="phone">
+  <control-messages [control]="empContact.get('phone')"></control-messages>
+  <ng-container formArrayName="socialInfo">
+    <div style="display: flex;justify-content: space-between;">
+      <span style="display: flex;align-items: center;">
+        Social Information:
+      </span>
+      <span>
+        <button (click)="addSocialInfo()">+ Add</button>
+      </span>
+    </div>
+    <section  *ngFor="let _ of socialInfo.controls; index as i" class="social-info">
+      <ng-container [formGroupName]="i"  >
+        <label>
+          Url:
+        </label>
+        <input type="text" formControlName="url">
+        <control-messages [control]="socialInfo.controls[i].get('url')"></control-messages>
+        <label>
+          type:
+        </label>
+        <input type="text" formControlName="type">
+        <control-messages [control]="socialInfo.controls[i].get('type')"></control-messages>
+      </ng-container>
+      <div class="social-info-error">
+        <button *ngIf="socialInfo.controls.length > 1" (click)="subtractSocialInfo(i)">- remove</button>
+      </div>
+    </section>
+  </ng-container>
 
 </form>

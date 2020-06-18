@@ -6,10 +6,12 @@
     First name:
   </label>
   <input type="text" formControlName="firstName">
-  <control-messages [control]="empGenral.get('firstName')"></control-messages>  <label>
+  <control-messages [control]="empGenral.get('firstName')"></control-messages>
+  <label>
     Last name:
   </label>
   <input type="text" formControlName="lastName">
+  <control-messages [control]="empGenral.get('lastName')"></control-messages>
   <label>
     Full name:
   </label>
@@ -22,6 +24,7 @@
     D.O.B
   </label>
   <input type="date" formControlName="dob">
+  <control-messages [control]="empGenral.get('dob')"></control-messages>
   <label>
     age
   </label>

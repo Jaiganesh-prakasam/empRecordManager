@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { EmpDetailsService } from '../emp-details.service';
 import { ValidationService } from '../../../validation.service';
 
@@ -32,8 +32,9 @@ export class EmpGeneralComponent implements OnInit {
   empGenral: FormGroup;
   constructor(
     public empDetailsService: EmpDetailsService,
-    public fB: FormBuilder) {
-    const pattern = '^[A-za-z]';
+    public fB: FormBuilder
+  ) {
+    const pattern = '[A-za-z][a-zA-Z ]+';
     this.empGenral = this.fB.group({
       firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(pattern)]],
       lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(pattern)]],
