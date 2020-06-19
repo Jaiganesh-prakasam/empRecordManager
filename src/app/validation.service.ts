@@ -35,10 +35,10 @@ export class ValidationService {
       return phoneMatch ? null : {invalidPhoneNumber: true};
     };
   }
-  static typeValidator(): ValidatorFn {
+  static socialMediaTypeValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      // const objArray = this.storeTypeValidationobjects();
-      // console.log(objArray);
+      // previous value of typeValidatorArray will be accessed which will exclude
+      // the current value
       if (this.typeValidatorArray.length > 1) {
         const unique = this.typeValidatorArray.filter(x => x.type === control.value);
         if (unique.length > 0) {
@@ -48,11 +48,29 @@ export class ValidationService {
       return null;
     };
   }
-  static storeTypeValidationobjects(): ValidatorFn {
+  static socialMediaUrlValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
+      const urlMatch = control.value.match(
+        '^[A-za-z0-9]*/[A-za-z0-9]{1}[A-za-z0-9]*$'
+        );
+      // console.log(urlMatch);
+      return urlMatch ? null : {socialMediaUrlMatch: false};
+    };
+  }
+  static storeSocialMediaTypeValidationobjects(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      //  store the current value, this will execute after typeValidator
       this.typeValidatorArray = [...control.value];
-      console.log(this.typeValidatorArray);
+      // console.log(this.typeValidatorArray);
       return control.value;
+    };
+  }
+  static futureDate(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const currentDate = new Date().getTime();
+      const enteredDate = new Date(control.value).getTime();
+      // console.log(this.typeValidatorArray);
+      return currentDate < enteredDate ? {futureDate: true} : null;
     };
   }
   public getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
@@ -65,7 +83,9 @@ export class ValidationService {
       maxlength: `Maximum length ${validatorValue.requiredLength}`,
       invalidAge: 'Please enter dob whose age above 18 and below 80',
       invalidPhoneNumber: 'please enter your phone number like 111-111-1111, only 10 digits allowed',
-      socialMediaNotUnique: 'social media already exist'
+      socialMediaNotUnique: 'social media already exist',
+      futureDate: 'Future date not allowed',
+      socialMediaUrlMatch: 'url example abc/abc'
     };
 
     return config[validatorName];

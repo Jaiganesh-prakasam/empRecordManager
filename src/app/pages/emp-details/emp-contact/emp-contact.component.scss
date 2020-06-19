@@ -3,10 +3,6 @@
   margin: 4px;
   padding: 4px;
   border-radius: 10px;
-  &-error {
-    display: flex;
-    justify-content: flex-end;
-  }
 }
 button {
   background-color: #4CAF50; /* Green */
@@ -20,4 +16,8 @@ button {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-end;
 }

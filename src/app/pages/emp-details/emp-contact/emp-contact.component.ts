@@ -29,26 +29,26 @@ export class EmpContactComponent implements OnInit {
     public empDetailsService: EmpDetailsService,
     public fB: FormBuilder
   ) {
-    this.socialInfo = this.fB.array([], ValidationService.storeTypeValidationobjects());
+    this.socialInfo = this.fB.array([], ValidationService.storeSocialMediaTypeValidationobjects());
     this.empContact = this.fB.group({
       email: ['', [Validators.required, ValidationService.emailValidator()]],
       phone: ['', [Validators.required, Validators.minLength(10), ValidationService.phoneNumberValidator()]],
       socialInfo: this.socialInfo
     });
-    // this.empContact.get('socialInfo')[0];
     this.addSocialInfo();
    }
 
   ngOnInit(): void {
   }
   addSocialInfo(): void {
+    const pattern = '^[A-za-z]*[\][A-za-z]*$';
     const tempGroup = this.fB.group({
-      url: ['', [Validators.required]],
-      type: ['', [Validators.required, ValidationService.typeValidator()]]
+      url: ['', [Validators.required, ValidationService.socialMediaUrlValidator() ]],
+      type: ['', [Validators.required, ValidationService.socialMediaTypeValidator()]]
     });
     this.socialInfo.push( tempGroup );
   }
-  subtractSocialInfo(index: number): void {
+  deleteSocialInfo(index: number): void {
     if (this.socialInfo.length > 1) {
       this.socialInfo.removeAt(index);
     }

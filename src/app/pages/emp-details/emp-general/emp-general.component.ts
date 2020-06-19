@@ -36,15 +36,24 @@ export class EmpGeneralComponent implements OnInit {
   ) {
     const pattern = '[A-za-z][a-zA-Z ]+';
     this.empGenral = this.fB.group({
-      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(pattern)]],
+      firstName: [
+        '' ,
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(15),
+          Validators.pattern(pattern)
+        ]
+      ],
       lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(pattern)]],
-      dob: ['', [Validators.required, ValidationService.ageValidator()]]
+      dob: ['', [Validators.required, ValidationService.ageValidator(), ValidationService.futureDate()]]
     });
   }
 
   ngOnInit(): void {
   }
   ageCalculation(date: string): number {
+    console.log(this.empDetailsService.empGeneral.firstName);
     if (date) {
       const dob = new Date(date);
       const diffMs = Date.now() - dob.getTime();

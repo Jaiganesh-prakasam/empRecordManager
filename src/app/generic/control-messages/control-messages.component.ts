@@ -21,14 +21,14 @@ export class ControlMessagesComponent implements OnInit, OnDestroy {
 
         // con.errors.map((x) => console.log(x));
         for (const [key, value1] of Object.entries(con.errors)) {
-          console.log(key + ':' + value1);
-          console.log(value1);
+          // console.log(key + ':' + value1);
+          // console.log(value1);
           this.errorObject[key] = value1;
         }
         const validationErrors = Object.keys(con.errors);
         validationErrors.forEach(element => {
           this.errors.add(element);
-          console.log(element);
+          // console.log(element);
         });
 
         this.errors.forEach(element => {
@@ -45,10 +45,10 @@ export class ControlMessagesComponent implements OnInit, OnDestroy {
         this.errors.clear(); // when the control has no errors then clear the internal errors set too
       }
 
-      console.log(con);
+      // console.log(con);
     });
   }
-    constructor(public errorMessageService: ValidationService) { }
+    constructor(public validationService: ValidationService) { }
 
     ngOnInit(): void {
     }

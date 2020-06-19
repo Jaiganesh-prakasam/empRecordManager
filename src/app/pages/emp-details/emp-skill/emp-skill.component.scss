@@ -1,0 +1,26 @@
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.emp-skill-button {
+  display: flex;
+  justify-content: flex-end;
+  &-center {
+    justify-content: center;
+  }
+}
+.emp-skill-card {
+  border: solid black 1px;
+  margin: 4px;
+  padding: 4px;
+  border-radius: 10px;
+}

@@ -13,13 +13,8 @@
   <input type="text" formControlName="phone">
   <control-messages [control]="empContact.get('phone')"></control-messages>
   <ng-container formArrayName="socialInfo">
-    <div style="display: flex;justify-content: space-between;">
-      <span style="display: flex;align-items: center;">
-        Social Information:
-      </span>
-      <span>
-        <button (click)="addSocialInfo()">+ Add</button>
-      </span>
+    <div style="margin-bottom:8px">
+      Social Information:
     </div>
     <section  *ngFor="let _ of socialInfo.controls; index as i" class="social-info">
       <ng-container [formGroupName]="i"  >
@@ -34,10 +29,13 @@
         <input type="text" formControlName="type">
         <control-messages [control]="socialInfo.controls[i].get('type')"></control-messages>
       </ng-container>
-      <div class="social-info-error">
-        <button *ngIf="socialInfo.controls.length > 1" (click)="subtractSocialInfo(i)">- remove</button>
+      <div class="button-container">
+        <button *ngIf="socialInfo.controls.length > 1" (click)="deleteSocialInfo(i)">remove</button>
       </div>
     </section>
+    <div class="button-container">
+      <button (click)="addSocialInfo()">Add social information</button>
+    </div>
   </ng-container>
 
 </form>
