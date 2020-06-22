@@ -23,35 +23,15 @@ import { ValidationService } from '../../../validation.service';
 //   type - example  [ {"url":"facebook/jsnuggets", type:"facebook"]
 //   Validation  -  valid URL/Id , unique
 export class EmpContactComponent implements OnInit {
-  empContact: FormGroup;
-  socialInfo: FormArray;
+
   constructor(
     public empDetailsService: EmpDetailsService,
     public fB: FormBuilder
   ) {
-    this.socialInfo = this.fB.array([], ValidationService.storeSocialMediaTypeValidationobjects());
-    this.empContact = this.fB.group({
-      email: ['', [Validators.required, ValidationService.emailValidator()]],
-      phone: ['', [Validators.required, Validators.minLength(10), ValidationService.phoneNumberValidator()]],
-      socialInfo: this.socialInfo
-    });
-    this.addSocialInfo();
+
    }
 
   ngOnInit(): void {
-  }
-  addSocialInfo(): void {
-    const pattern = '^[A-za-z]*[\][A-za-z]*$';
-    const tempGroup = this.fB.group({
-      url: ['', [Validators.required, ValidationService.socialMediaUrlValidator() ]],
-      type: ['', [Validators.required, ValidationService.socialMediaTypeValidator()]]
-    });
-    this.socialInfo.push( tempGroup );
-  }
-  deleteSocialInfo(index: number): void {
-    if (this.socialInfo.length > 1) {
-      this.socialInfo.removeAt(index);
-    }
   }
 
 }

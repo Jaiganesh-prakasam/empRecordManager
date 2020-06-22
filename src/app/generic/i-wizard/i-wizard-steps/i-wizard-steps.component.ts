@@ -1,4 +1,13 @@
-import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  AfterViewInit,
+  Output,
+  EventEmitter,
+  ViewChildren,
+  QueryList
+} from '@angular/core';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -19,6 +28,7 @@ export class IWizardStepsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     // console.log(this.isFirst);
     // console.log(this.isLast);
+    // console.log(this.myChild);
   }
   previousPage() {
     this.previous.emit();

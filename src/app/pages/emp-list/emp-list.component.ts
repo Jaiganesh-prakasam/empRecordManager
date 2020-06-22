@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeDetailsService } from '../../employee-details.service';
+import { EmployeeFetchDetailsService } from '../../employee-fetch-details.service';
 import { EmpDetails } from '../../sharedInterface/emp-details';
 import { Router } from '@angular/router';
 @Component({
@@ -11,6 +11,7 @@ export class EmpListComponent implements OnInit {
   employees: EmpDetails[];
   employeesSettings = {
     headers : [
+      'id',
       'First name',
       'Last name',
       'Full Name',
@@ -18,6 +19,7 @@ export class EmpListComponent implements OnInit {
       'Age'
     ],
     contentFieldArray : [
+      ['id'],
       ['empGeneral', 'firstName'],
       ['empGeneral', 'lastName'],
       ['empGeneral', 'fullName'],
@@ -26,9 +28,9 @@ export class EmpListComponent implements OnInit {
     ]
   };
   constructor(
-      private employeeDetailsService: EmployeeDetailsService,
+      private employeeFetchDetailsService: EmployeeFetchDetailsService,
       private router: Router) {
-    this.employeeDetailsService.getHeroes()
+    this.employeeFetchDetailsService.getEmployees()
     .subscribe(heroes => {
       this.employees = heroes;
       console.log(heroes);

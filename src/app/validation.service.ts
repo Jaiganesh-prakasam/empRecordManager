@@ -17,21 +17,27 @@ export class ValidationService {
       return age > 18 && age < 80 ? null : {invalidAge: true};
     };
   }
+  static onlyAlphabetsValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const onlyAlphabets = control.value.match( /^[A-Za-z\s]*$/ );
+      return onlyAlphabets ? null : {onlyAlphabets: false};
+    };
+  }
   static emailValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const emailMatch = control.value.match(
         /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
       );
-      console.log(emailMatch);
+      // console.log(emailMatch);
       return emailMatch ? null : {invalidEmailAddress: true};
     };
   }
   static phoneNumberValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const phoneMatch = control.value.match(
-        '^[0-9]{3}\-[0-9]{3}\-[0-9]{4}$'
+        /^[0-9]{3}\-[0-9]{3}\-[0-9]{4}$/
         );
-      console.log(phoneMatch);
+      // console.log(phoneMatch);
       return phoneMatch ? null : {invalidPhoneNumber: true};
     };
   }
@@ -51,7 +57,7 @@ export class ValidationService {
   static socialMediaUrlValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const urlMatch = control.value.match(
-        '^[A-za-z0-9]*/[A-za-z0-9]{1}[A-za-z0-9]*$'
+        /^[A-za-z0-9]+\\[A-za-z0-9]{1}[A-za-z0-9]*$/
         );
       // console.log(urlMatch);
       return urlMatch ? null : {socialMediaUrlMatch: false};
@@ -85,7 +91,8 @@ export class ValidationService {
       invalidPhoneNumber: 'please enter your phone number like 111-111-1111, only 10 digits allowed',
       socialMediaNotUnique: 'social media already exist',
       futureDate: 'Future date not allowed',
-      socialMediaUrlMatch: 'url example abc/abc'
+      socialMediaUrlMatch: 'url example abc\abc',
+      onlyAlphabets: 'only alphabets allowed, Please don\'t enter special characters or numbers'
     };
 
     return config[validatorName];

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { EmpDetailsService } from './emp-details.service';
 @Component({
   selector: 'app-emp-details',
   templateUrl: './emp-details.component.html',
-  styleUrls: ['./emp-details.component.scss']
+  styleUrls: ['./emp-details.component.scss'],
+  providers: [ EmpDetailsService ]
 })
 export class EmpDetailsComponent implements OnInit {
   stepsData = [
