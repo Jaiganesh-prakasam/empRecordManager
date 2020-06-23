@@ -17,12 +17,13 @@ export interface EmpGeneral {
 export interface EmpContact {
   email: string;
   phone: string;
-  socialInfo: {
-    url: string;
-    type: string;
-  };
+  socialInfo: SocialInfo[];
 }
 
+export interface SocialInfo {
+  url: string;
+  type: string;
+}
 export interface EmpSkill {
   skill: string;
   rate: number;

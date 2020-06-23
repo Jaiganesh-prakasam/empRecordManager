@@ -6,6 +6,7 @@ import {
   Output,
   EventEmitter
  } from '@angular/core';
+import { ITableSharedFunctionService } from '../i-table-shared-function.service';
 
 @Component({
   selector: 'app-pagination-container',
@@ -37,7 +38,7 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
     console.log(tempNumberOfRows);
   }
   numberOfButtons(tempNumberOfRows: number): void {
-    if (this.pageNumberSelected) {
+    if (this.pageNumberSelected && document.getElementById(String(this.pageNumberSelected))) {
       document.getElementById(String(this.pageNumberSelected)).classList.remove('active');
     }
     const noOfPges = Math.ceil(this.totalRecordsSize / tempNumberOfRows);
@@ -46,30 +47,29 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
       this.itemFromTo.emit([0, tempNumberOfRows]);
       this.pageNumberSelected = 1;
       setTimeout(() => {
-       document.getElementById('1').classList.add('active');
+        document.getElementById('1').classList.add('active');
       }, 0);
     }.bind(this), 0);
   }
   buttonsAfterFilter(totalRecordcount: number) {
-    if (this.pageNumberSelected) {
+    if (this.pageNumberSelected && document.getElementById(String(this.pageNumberSelected))) {
       document.getElementById(String(this.pageNumberSelected)).classList.remove('active');
     }
     const tempNumberOfRows = (document.getElementById('rows') as HTMLInputElement).value;
     const noOfPges = Math.ceil(totalRecordcount / Number(tempNumberOfRows));
-    console.log(totalRecordcount);
-    console.log(tempNumberOfRows);
-    console.log(noOfPges);
     setTimeout(function() {
       this.totalDivisions = new Array(noOfPges);
       this.pageNumberSelected = 1;
       setTimeout(() => {
-       document.getElementById('1').classList.add('active');
+        if (document.getElementById('1')) {
+          document.getElementById('1').classList.add('active');
+        }
       }, 0);
     }.bind(this), 0);
   }
   jumpToFirst(): void {
     // should stop if it is already in first page
-    if (this.pageNumberSelected !== 1) {
+    if (this.pageNumberSelected !== 1 ) {
       const nextNumber = 1;
       this.jumToThisPage(nextNumber);
     }

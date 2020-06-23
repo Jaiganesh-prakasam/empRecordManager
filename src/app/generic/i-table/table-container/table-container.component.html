@@ -1,12 +1,15 @@
 <table class ="table-data" *ngIf="settings && tableData">
   <tr>
-    <th *ngFor="let heading of settings.headers">
-      {{heading}}
+    <th *ngFor="let definition of settings.fieldDefinition">
+      {{definition.heading}}
     </th>
   </tr>
   <tr *ngFor="let data of tableData ; let i  = index">
-    <td *ngFor="let fieldArray of settings.contentFieldArray">
-      {{getValue(data,fieldArray)}}
+    <td *ngFor="let definition of settings.fieldDefinition">
+      {{iTableSharedFunctionService.mutiValueCombination(data,definition.contentArray)}}
     </td>
   </tr>
 </table>
+<div class="no-data" *ngIf="tableData && tableData.length === 0">
+  No data to display
+</div>

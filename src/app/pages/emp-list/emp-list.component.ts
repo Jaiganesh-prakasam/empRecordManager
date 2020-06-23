@@ -10,32 +10,48 @@ import { Router } from '@angular/router';
 export class EmpListComponent implements OnInit {
   employees: EmpDetails[];
   employeesSettings = {
-    headers : [
-      'id',
-      'First name',
-      'Last name',
-      'Full Name',
-      'D.O.B',
-      'Age'
-    ],
-    contentFieldArray : [
-      ['id'],
-      ['empGeneral', 'firstName'],
-      ['empGeneral', 'lastName'],
-      ['empGeneral', 'fullName'],
-      ['empGeneral', 'dob'],
-      ['empGeneral', 'age']
+    fieldDefinition: [
+      {
+        heading: 'id',
+        type: 'string',
+        contentArray: [['id']]
+      },
+      {
+        heading: 'First name',
+        type: 'string',
+        contentArray: [['empGeneral', 'firstName']]
+      },
+      {
+        heading: 'Last name',
+        type: 'string',
+        contentArray: [['empGeneral', 'lastName']]
+      },
+      {
+        heading: 'Full Name',
+        type: 'string',
+        contentArray: [['empGeneral', 'firstName'], ['empGeneral', 'lastName']]
+      },
+      {
+        heading:  'D.O.B',
+        type: 'date',
+        contentArray: [['empGeneral', 'dob']]
+      },
+      {
+        heading: 'Age',
+        type: 'age',
+        contentArray: [['empGeneral', 'age']]
+      },
     ]
   };
   constructor(
-      private employeeFetchDetailsService: EmployeeFetchDetailsService,
-      private router: Router) {
+    private employeeFetchDetailsService: EmployeeFetchDetailsService,
+    private router: Router) {
     this.employeeFetchDetailsService.getEmployees()
-    .subscribe(heroes => {
-      this.employees = heroes;
-      console.log(heroes);
-    });
-   }
+      .subscribe(heroes => {
+        this.employees = heroes;
+        console.log(heroes);
+      });
+  }
 
   ngOnInit(): void {
   }

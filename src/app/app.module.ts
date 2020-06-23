@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
-
+import { DatePipe } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -19,7 +19,7 @@ import { AppComponent } from './app.component';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

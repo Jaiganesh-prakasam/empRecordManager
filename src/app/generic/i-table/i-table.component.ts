@@ -2,10 +2,12 @@ import { Component, OnInit, Input, AfterViewInit, ViewChild, OnChanges, SimpleCh
 import { EmpDetails } from '../../sharedInterface/emp-details';
 import { LowerCasePipe } from '@angular/common';
 import { PaginationContainerComponent } from './pagination-container/pagination-container.component';
+import { ITableSharedFunctionService } from './i-table-shared-function.service';
 @Component({
   selector: 'app-i-table',
   templateUrl: './i-table.component.html',
-  styleUrls: ['./i-table.component.scss']
+  styleUrls: ['./i-table.component.scss'],
+  providers: [ITableSharedFunctionService]
 })
 /***********************************
  * @tableData - Array of objects
@@ -20,7 +22,7 @@ export class ITableComponent implements OnInit, AfterViewInit, OnChanges {
   filterTableData: EmpDetails[];
   startEndArrayState: number[];
   tableLength: number;
-  constructor() { }
+  constructor(private iTableSharedFunctionService: ITableSharedFunctionService) { }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
     if (changes && this.startEndArrayState && this.tableData) {
@@ -52,14 +54,18 @@ export class ITableComponent implements OnInit, AfterViewInit, OnChanges {
   public filterData(x): void {
     console.log(x);
     if (x[0] !== '') {
-      const searchField = this.settings.contentFieldArray;
-      console.log(searchField[0]);
+      const searchField = this.settings.fieldDefinition;
+      // console.log(searchField);
+      let searchString = '';
+      const subString = x[0].toLowerCase();
       this.filterTableData =  this.tableData.filter((item) => {
-        const searchString = item[searchField[0][0]][searchField[0][1]].toLowerCase();
-        const subString = x[0].toLowerCase();
-        if (searchString.includes(subString)) {
-          return true;
-        }
+        const matchFound  = searchField.filter(searchObject => {
+          searchString = this.iTableSharedFunctionService.mutiValueCombination(item, searchObject.contentArray);
+          if (searchString.toLowerCase().includes(subString)) {
+            return true;
+          }
+        });
+        return matchFound.length > 0;
       });
       this.arrayRange(this.startEndArrayState, 'fromFilter');
     } else {

@@ -20,10 +20,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -74,10 +74,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -128,10 +128,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -182,10 +182,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -236,10 +236,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -290,10 +290,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -344,10 +344,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -398,10 +398,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -452,10 +452,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -506,10 +506,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -560,10 +560,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -614,10 +614,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -668,10 +668,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -722,10 +722,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -776,10 +776,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -830,10 +830,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {
@@ -884,10 +884,10 @@ export class InMemoryDataService implements InMemoryDbService {
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: {
+          socialInfo: [{
             url: '/john-doe',
             type: 'facebook'
-          }
+          }]
         },
         empSkill: [
           {

@@ -30,7 +30,7 @@ export class EmployeeFetchDetailsService {
   /** POST: add a new employee to the server */
   addEmployee(employee: EmpDetails): Observable<EmpDetails> {
     return this.http.post<EmpDetails>(this.employeesUrl, employee, this.httpOptions).pipe(
-      tap((newEmployee: EmpDetails) => console.log(`added employee w/ id=${newEmployee.id}`)),
+      tap((newEmployee: EmpDetails) => console.log(newEmployee)),
       catchError(this.handleError<EmpDetails>('addEmployee'))
     );
   }

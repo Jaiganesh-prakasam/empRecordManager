@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IWizardModule } from '../../generic/i-wizard/i-wizard.module';
 import { ControlMessagesModule } from '../../generic/control-messages/control-messages.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmpDetailsComponent } from './emp-details.component';
 import { EmpGeneralComponent } from './emp-general/emp-general.component';
 import { EmpContactComponent } from './emp-contact/emp-contact.component';

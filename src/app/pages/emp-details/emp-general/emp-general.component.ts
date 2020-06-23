@@ -34,7 +34,6 @@ export class EmpGeneralComponent implements OnInit {
   ngOnInit(): void {
   }
   ageCalculation(date: string): number {
-    console.log(this.empDetailsService.empGenral.valid);
     if (date) {
       const dob = new Date(date);
       const diffMs = Date.now() - dob.getTime();

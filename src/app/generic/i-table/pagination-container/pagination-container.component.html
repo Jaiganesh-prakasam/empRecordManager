@@ -15,10 +15,7 @@
 </div>
 <ng-content></ng-content>
 <div class="container-bottom">
-  <div>
-
-  </div>
-  <nav class="pagination">
+  <nav class="pagination" *ngIf="totalDivisions && totalDivisions.length> 0">
     <div (click)="jumpToFirst()" >&laquo;</div>
     <div (click)="previous()">&#8249;</div>
     <div id={{i+1}} (click)="jumToThisPage(i+1)" *ngFor="let division of totalDivisions;let i = index">{{i +1}}</div>
