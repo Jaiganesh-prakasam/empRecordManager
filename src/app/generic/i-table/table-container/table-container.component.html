@@ -6,7 +6,7 @@
   </tr>
   <tr *ngFor="let data of tableData ; let i  = index">
     <td *ngFor="let definition of settings.fieldDefinition">
-      {{iTableSharedFunctionService.mutiValueCombination(data,definition.contentArray)}}
+      {{iTableSharedFunctionService.mutiValueCombination(data,definition.contentArray, definition.type, definition.callMethod)}}
     </td>
   </tr>
 </table>

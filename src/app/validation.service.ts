@@ -79,6 +79,13 @@ export class ValidationService {
       return currentDate < enteredDate ? {futureDate: true} : null;
     };
   }
+  static rating(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const rateValue = control.value;
+      // console.log(this.typeValidatorArray);
+      return rateValue <= 10 ? null : {rateGreaterThanTen: true};
+    };
+  }
   public getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
     // console.log(validatorValue);
     const config = {
@@ -92,7 +99,8 @@ export class ValidationService {
       socialMediaNotUnique: 'social media already exist',
       futureDate: 'Future date not allowed',
       socialMediaUrlMatch: 'url example abc\abc',
-      onlyAlphabets: 'only alphabets allowed, Please don\'t enter special characters or numbers'
+      onlyAlphabets: 'only alphabets allowed, Please don\'t enter special characters or numbers',
+      rateGreaterThanTen: 'Enter a rate less than or equal to 10'
     };
 
     return config[validatorName];

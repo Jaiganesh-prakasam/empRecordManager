@@ -39,7 +39,16 @@ export class EmpListComponent implements OnInit {
       {
         heading: 'Age',
         type: 'age',
-        contentArray: [['empGeneral', 'age']]
+        contentArray: [['empGeneral', 'dob']],
+        callMethod: (date) => {
+          if (date) {
+            const dob = new Date(date);
+            const diffMs = Date.now() - dob.getTime();
+            const  ageDt = new Date(diffMs);
+            return Math.abs(ageDt.getUTCFullYear() - 1970);
+          }
+          console.log(date);
+        }
       },
     ]
   };
@@ -57,7 +66,6 @@ export class EmpListComponent implements OnInit {
   }
   addEmplyee(): void {
     this.router.navigate(['/routing/emp-details']);
-
   }
 
 }

@@ -14,26 +14,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -44,23 +46,23 @@ export class InMemoryDataService implements InMemoryDbService {
             },
             companyUrl: 'www.abc1.com',
             role: 'junior developer',
-            fromDate: '26-06-2015',
-            toDate: '31-03-2018',
-            experience: 3
+            fromDate: '2015-06-06',
+            toDate: '2018-03-31',
+            experience: 3,
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
-            fromDate: '01-04-2018',
-            toDate: 'present',
-            experience: 2
-          }
-        ]
+            fromDate: '2018-04-01',
+            toDate: '2020-04-01',
+            experience: 2,
+          },
+        ],
       },
       {
         id: 2,
@@ -68,26 +70,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'Vincent',
           lastName: 'Board',
           fullName: 'Vincent Board',
-          dob: '19-09-1991',
-          age: 28
+          dob: '1991-01-20',
+          age: 28,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -100,21 +104,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 3,
@@ -122,26 +126,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'Rtosh',
           lastName: 'Tailor',
           fullName: 'Rtosh Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -154,21 +160,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 4,
@@ -176,26 +182,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -208,21 +216,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 5,
@@ -230,26 +238,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -262,21 +272,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 17,
@@ -284,26 +294,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -316,21 +328,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 6,
@@ -338,26 +350,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -370,21 +384,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 7,
@@ -392,26 +406,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -424,21 +440,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 8,
@@ -446,26 +462,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -478,21 +496,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 9,
@@ -500,26 +518,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -532,21 +552,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 10,
@@ -554,26 +574,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -586,21 +608,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 11,
@@ -608,26 +630,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -640,21 +664,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 12,
@@ -662,26 +686,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -692,23 +718,23 @@ export class InMemoryDataService implements InMemoryDbService {
             },
             companyUrl: 'www.abc1.com',
             role: 'junior developer',
-            fromDate: '26-06-2015',
+            fromDate: '2015-06-15',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 13,
@@ -716,26 +742,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -748,21 +776,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 14,
@@ -770,26 +798,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -802,21 +832,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 15,
@@ -824,26 +854,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -856,21 +888,21 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
       {
         id: 16,
@@ -878,26 +910,28 @@ export class InMemoryDataService implements InMemoryDbService {
           firstName: 'John Doe',
           lastName: 'Tailor',
           fullName: 'John Doe Tailor',
-          dob: '19-09-1994',
-          age: 26
+          dob: '1991-01-20',
+          age: 26,
         },
         empContact: {
           email: 'xyz@gmail.com',
           phone: '979-979-9797',
-          socialInfo: [{
-            url: '/john-doe',
-            type: 'facebook'
-          }]
+          socialInfo: [
+            {
+              url: '/john-doe',
+              type: 'facebook',
+            },
+          ],
         },
         empSkill: [
           {
             skill: 'angular',
-            rate: 7.5
+            rate: 7.5,
           },
           {
             skill: 'javascript',
-            rate: 7
-          }
+            rate: 7,
+          },
         ],
         empExperience: [
           {
@@ -910,24 +944,24 @@ export class InMemoryDataService implements InMemoryDbService {
             role: 'junior developer',
             fromDate: '26-06-2015',
             toDate: '31-03-2018',
-            experience: '3'
+            experience: '3',
           },
           {
             companyName: 'abc2',
             location: {
               city: 'chennai',
-              country: 'india'
+              country: 'india',
             },
             companyUrl: 'www.abc2.com',
             role: 'senior developer',
             fromDate: '01-04-2018',
             toDate: 'present',
-            experience: '2'
-          }
-        ]
+            experience: '2',
+          },
+        ],
       },
     ];
-    return {employees};
+    return { employees };
   }
 
   // Overrides the genId method to ensure that a hero always has an id.
@@ -936,7 +970,9 @@ export class InMemoryDataService implements InMemoryDbService {
   // if the heroes array is not empty, the method below returns the highest
   // hero id + 1.
   genId(heroes: EmpDetails[]): number {
-    console.log(heroes.map(hero => hero.id) );
-    return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 1;
+    console.log(heroes.map((hero) => hero.id));
+    return heroes.length > 0
+      ? Math.max(...heroes.map((hero) => hero.id)) + 1
+      : 1;
   }
 }

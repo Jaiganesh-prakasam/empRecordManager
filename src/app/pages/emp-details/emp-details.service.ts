@@ -132,12 +132,14 @@ export class EmpDetailsService {
   addExperience(): void {
     const tempGroup = this.fB.group({
       companyName: ['', [Validators.required, Validators.min(3) , Validators.max(25)]],
-      city: ['', [Validators.required]],
-      country: ['', [Validators.required]],
+      location: this.fB.group({
+        city: ['', [Validators.required]],
+        country: ['', [Validators.required]]
+      }),
       companyUrl: ['', [Validators.required]],
       role: ['', [Validators.required]],
-      from: ['', [Validators.required, ValidationService.futureDate()]],
-      to: ['', [Validators.required, ValidationService.futureDate()]],
+      fromDate: ['', [Validators.required, ValidationService.futureDate()]],
+      toDate: ['', [Validators.required, ValidationService.futureDate()]],
       experience: [{value: '', disabled: true}, [Validators.required]],
     });
     this.empExperienceArray.push( tempGroup );
@@ -168,7 +170,7 @@ export class EmpDetailsService {
   addskill(): void {
     const tempGroup = this.fB.group({
       skill: ['', [Validators.required, Validators.min(3) , Validators.max(25)]],
-      rate: ['', [Validators.required]],
+      rate: ['', [Validators.required, ValidationService.rating()]],
     });
     this.empSkillArray.push( tempGroup );
   }

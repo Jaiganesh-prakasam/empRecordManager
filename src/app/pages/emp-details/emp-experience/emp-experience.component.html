@@ -3,7 +3,7 @@
 </h1>
 <form [formGroup]="empDetailsService.empExperienceGroup">
   <ng-container formArrayName="empExperienceArray">
-    <section *ngFor="let _ of empDetailsService.empExperienceArray.controls; index as i" class="experience-card" >
+    <section *ngFor="let n of empDetailsService.empExperienceArray.controls; index as i" class="experience-card" >
       <ng-container [formGroupName]="i"  >
         <h2>
           {{'Company' + ' ' + (i+1) + ':' }}
@@ -13,16 +13,18 @@
         </label>
         <input type="text" formControlName="companyName" >
         <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('companyName')"></control-messages>
-        <label>
-          city:
-        </label>
-        <input type="text" formControlName="city" >
-        <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('city')"></control-messages>
-        <label>
-          country:
-        </label>
-        <input type="text" formControlName="country">
-        <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('country')"></control-messages>
+        <div formGroupName="location">
+          <label>
+            city:
+          </label>
+          <input type="text" formControlName="city" >
+          <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('location').get('city')"></control-messages>
+          <label>
+            country:
+          </label>
+          <input type="text" formControlName="country">
+          <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('location').get('country')"></control-messages>
+        </div>
         <label>
           company Url:
         </label>
@@ -45,21 +47,21 @@
         <label>
           from
         </label>
-        <input type="date" formControlName="from">
-        <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('from')"></control-messages>
+        <input type="date" formControlName="fromDate">
+        <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('fromDate')"></control-messages>
         <label>
           to
         </label>
-        <input type="date" formControlName="to">
-        <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('to')"></control-messages>
+        <input type="date" formControlName="toDate">
+        <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('toDate')"></control-messages>
         <label>
           experience
         </label>
-        <div class="text-container">
+        <div class="text-container" >
           {{
             experienceCalculation(
-              empDetailsService.empExperienceArray.controls[i].value.from ,
-              empDetailsService.empExperienceArray.controls[i].value.to)
+              empDetailsService.empExperienceArray.controls[i].value.fromDate ,
+              empDetailsService.empExperienceArray.controls[i].value.toDate)
           }}
         </div>
       </ng-container>
