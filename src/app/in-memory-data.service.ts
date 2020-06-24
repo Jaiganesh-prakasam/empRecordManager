@@ -22,7 +22,7 @@ export class InMemoryDataService implements InMemoryDbService {
           phone: '979-979-9797',
           socialInfo: [
             {
-              url: '/john-doe',
+              url: 'a/john-doe',
               type: 'facebook',
             },
           ],

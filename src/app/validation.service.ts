@@ -98,11 +98,10 @@ export class ValidationService {
       invalidPhoneNumber: 'please enter your phone number like 111-111-1111, only 10 digits allowed',
       socialMediaNotUnique: 'social media already exist',
       futureDate: 'Future date not allowed',
-      socialMediaUrlMatch: 'url example abc\abc',
+      socialMediaUrlMatch: 'url example abc\\abc',
       onlyAlphabets: 'only alphabets allowed, Please don\'t enter special characters or numbers',
       rateGreaterThanTen: 'Enter a rate less than or equal to 10'
     };
-
     return config[validatorName];
   }
 }

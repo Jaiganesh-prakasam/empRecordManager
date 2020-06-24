@@ -62,9 +62,8 @@ export class EmpListComponent implements OnInit {
   }
   fetchEmployee(): void {
     this.employeeFetchDetailsService.getEmployees()
-    .subscribe(heroes => {
-      this.employees = heroes;
-      console.log(heroes);
+    .subscribe(employees => {
+      this.employees = employees.sort((employee1, employee2) => Number(employee1.id) - Number(employee2.id));
     });
   }
   addEmplyee(): void {
