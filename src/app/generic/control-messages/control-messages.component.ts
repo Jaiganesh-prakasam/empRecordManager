@@ -14,15 +14,11 @@ export class ControlMessagesComponent implements OnInit, OnDestroy {
   errorObject = new Object();
   private sub: Subscription;
   @Input() set control(con: FormControl) {
-
     this.sub = con.statusChanges.subscribe((value) => {
       if (con.errors) {
-
-
         // con.errors.map((x) => console.log(x));
         for (const [key, value1] of Object.entries(con.errors)) {
           // console.log(key + ':' + value1);
-          // console.log(value1);
           this.errorObject[key] = value1;
         }
         const validationErrors = Object.keys(con.errors);

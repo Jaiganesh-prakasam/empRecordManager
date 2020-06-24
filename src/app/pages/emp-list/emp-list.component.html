@@ -1,7 +1,7 @@
 <div class="emp-list-update-delete" >
   <select name="emp-list" #empList >
     <option *ngFor="let employee  of this.employees" value={{employee.id}}>
-      {{employee.id}} {{employee.empGeneral.fullName}}
+      {{employee.id}} {{ ' ' + employee.empGeneral.firstName}} {{ ' ' + employee.empGeneral.lastName}}
     </option>
   </select>
   <button (click)="updateEmplyee(empList.value)">

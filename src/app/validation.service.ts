@@ -68,7 +68,7 @@ export class ValidationService {
       //  store the current value, this will execute after typeValidator
       this.typeValidatorArray = [...control.value];
       // console.log(this.typeValidatorArray);
-      return control.value;
+      return null;
     };
   }
   static futureDate(): ValidatorFn {

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { ValidationService } from '../../validation.service';
 import { EmployeeFetchDetailsService } from '../../employee-fetch-details.service';
@@ -34,11 +34,13 @@ export class EmpDetailsService {
   ];
   skillListOptions = [];
   id: number;
+  errorFormArray = [];
   constructor(
     public fB: FormBuilder,
     public employeeFetchDetailsService: EmployeeFetchDetailsService,
     public router: Router,
-    public  datePipe: DatePipe) {
+    public  datePipe: DatePipe,
+    private ref: ChangeDetectorRef) {
     this.empGeneralFormInitiation();
     this.empContactFormInitiation();
     this.empExperienceFormInitiation();
@@ -89,24 +91,23 @@ export class EmpDetailsService {
     });
   }
   empContactFormInitiation(): void {
-    this.socialInfo = this.fB.array([], ValidationService.storeSocialMediaTypeValidationobjects());
+    this.socialInfo = this.fB.array([this.socialInfoGroup()], ValidationService.storeSocialMediaTypeValidationobjects());
     this.empContact = this.fB.group({
       email: ['', [Validators.required, ValidationService.emailValidator()]],
       phone: ['', [Validators.required, Validators.minLength(10), ValidationService.phoneNumberValidator()]],
       socialInfo: this.socialInfo
     });
-    this.addSocialInfo();
   }
   empExperienceFormInitiation(): void {
-    this.empExperienceArray = this.fB.array([]);
+    this.empExperienceArray = this.fB.array([this.experienceDetails()]);
     this.empExperienceGroup = this.fB.group({
-      empExperienceArray : this.empExperienceArray});
-    this.addExperience();
+      empExperienceArray : this.empExperienceArray
+    });
   }
   empSkillFormInitiation(): void {
     this.empSkillArray = this.fB.array([]);
     this.empSkill = this.fB.group({
-      empExperienceArray : this.empSkillArray
+      empSkillArray : this.empSkillArray
     });
     this.addskill();
   }
@@ -119,13 +120,14 @@ export class EmpDetailsService {
     });
 
   }
-  addSocialInfo(): void {
-    const pattern = '^[A-za-z]*[\][A-za-z]*$';
-    const tempGroup = this.fB.group({
+  socialInfoGroup(): FormGroup {
+    return this.fB.group({
       url: ['', [Validators.required, ValidationService.socialMediaUrlValidator() ]],
       type: ['', [Validators.required, ValidationService.socialMediaTypeValidator()]]
     });
-    this.socialInfo.push( tempGroup );
+  }
+  addSocialInfo(): void {
+    this.socialInfo.push( this.socialInfoGroup() );
   }
   deleteSocialInfo(index: number): void {
     if (this.socialInfo.length > 1) {
@@ -133,7 +135,10 @@ export class EmpDetailsService {
     }
   }
   addExperience(): void {
-    const tempGroup = this.fB.group({
+    this.empExperienceArray.push( this.experienceDetails() );
+  }
+  experienceDetails(): FormGroup {
+    return this.fB.group({
       companyName: ['', [Validators.required, Validators.min(3) , Validators.max(25)]],
       location: this.fB.group({
         city: ['', [Validators.required]],
@@ -145,7 +150,6 @@ export class EmpDetailsService {
       toDate: ['', [Validators.required, ValidationService.futureDate()]],
       experience: [{value: '', disabled: true}, [Validators.required]],
     });
-    this.empExperienceArray.push( tempGroup );
   }
   deleteExperience(index): void {
     if (this.empExperienceArray.length > 1) {
@@ -206,9 +210,40 @@ export class EmpDetailsService {
     }
     return matches;
   }
+  formValidation(): void {
+    let count = 0;
+    if (this.empGeneral.invalid) {
+      console.log('Employee general detils invalid');
+      this.errorFormArray.push('Employee general detils invalid');
+      count ++;
+    }
+    console.log(this.socialInfo.invalid);
+    if (
+      this.empContact.get('email').invalid ||
+      this.empContact.get('phone').invalid ||
+      this.socialInfo.invalid
+      ) {
+      console.log('Employee contacts invalid');
+      this.errorFormArray.push('Employee contacts invalid');
+      count++;
+    }
+    if (this.empExperienceArray.invalid) {
+      console.log('Employee experienceinvalid');
+      this.errorFormArray.push('Employee experience invalid');
+      count++;
+    }
+    if (this.empSkillArray.invalid) {
+      console.log('Employee skills invalid');
+      this.errorFormArray.push('Employee skills invalid');
+      count++;
+    }
+    if (count === 0) {
+      this.submitForm();
+    } else {
+      this.validateAllFormFields(this.empDetails);
+    }
+  }
   submitForm(): void {
-    console.log(this.empDetails);
-    console.log(this.empDetails.value);
     if (this.id) {
       this.empDetails.value.id = this.id;
     }
@@ -216,6 +251,20 @@ export class EmpDetailsService {
     this.employeeFetchDetailsService.addEmployee(this.empDetails.value as EmpDetails).subscribe(employee => {
         console.log(employee);
         this.router.navigate(['/routing/emp-list']);
+    });
+  }
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.updateValueAndValidity({ onlySelf: false, emitEvent: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      } else if (control instanceof FormArray) {
+        control.controls.forEach((elementControl: FormGroup) => {
+          this.validateAllFormFields(elementControl);
+        });
+      }
     });
   }
 }

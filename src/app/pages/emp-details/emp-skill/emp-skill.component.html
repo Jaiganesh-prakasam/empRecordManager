@@ -2,7 +2,7 @@
   Skills
 </h1>
 <form [formGroup]="empDetailsService.empSkill">
-  <ng-container formArrayName="empExperienceArray">
+  <ng-container formArrayName="empSkillArray">
     <section *ngFor="let _ of empDetailsService.empSkillArray.controls; index as i" class="emp-skill-card">
       <ng-container [formGroupName]="i"  >
         <label>
@@ -24,6 +24,9 @@
           rate: (out of 10)
         </label>
         <input type="number" formControlName="rate">
+        <div *ngIf="empDetailsService.empSkillArray.controls[i].get('rate').invalid && (empDetailsService.empSkillArray.controls[i].get('rate').dirty || empDetailsService.empSkillArray.controls[i].get('rate').touched)">
+          {{empDetailsService.empSkillArray.controls[i].get('rate').errors | json}}
+        </div>
         <control-messages [control]="empDetailsService.empSkillArray.controls[i].get('rate')"></control-messages>
       </ng-container>
       <div class="emp-skill-button">
@@ -35,6 +38,9 @@
 <div class="emp-skill-button">
   <button (click)="empDetailsService.addskill()">Add skill</button>
 </div>
+<div *ngFor="let i of empDetailsService.errorFormArray">
+  {{i}}
+</div>
 <div class="emp-skill-button emp-skill-button-center">
-  <button (click)="empDetailsService.submitForm()"> Submit </button>
+  <button (click)="empDetailsService.formValidation()"> Submit </button>
 </div>
