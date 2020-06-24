@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmpDetailsService } from './emp-details.service';
 @Component({
   selector: 'app-emp-details',
@@ -25,9 +26,20 @@ export class EmpDetailsComponent implements OnInit {
       title: 'Skills'
     },
   ];
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private empDetailsService: EmpDetailsService
+    ) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(queryParams => {
+      console.log(queryParams);
+      if (queryParams.orderType === 'update') {
+        this.empDetailsService.fetchAndPopulateEmployeeDetails(Number(queryParams.id));
+      } else if (queryParams.orderType === 'add') {
+
+      }
+    });
   }
   post() {
     const temp = {

@@ -45,6 +45,36 @@ export class EmpDetailsService {
     this.empSkillFormInitiation();
     this.empDetailsFormInitiation();
   }
+  fetchAndPopulateEmployeeDetails(id: number): void {
+    this.employeeFetchDetailsService.getEmployee(id)
+      .subscribe((data) => {
+        console.log(data);
+        this.empGeneral.patchValue(data.empGeneral);
+        // this.empContact.email.patchValue(data.empContact);
+        data.empSkill.forEach((element, i) => {
+          if ( data.empSkill.length - 1 !== i) {
+            this.addskill();
+          }
+        });
+        this.empSkillArray.patchValue(data.empSkill);
+
+        data.empExperience.forEach((element, i) => {
+          if ( data.empExperience.length - 1 !== i) {
+            this.addExperience();
+          }
+        });
+        this.empExperienceArray.patchValue(data.empExperience);
+
+        data.empContact.socialInfo.forEach((element, i) => {
+          if ( data.empContact.socialInfo.length - 1 !== i) {
+            this.addSocialInfo();
+          }
+        });
+        this.empContact.patchValue(data.empContact);
+        // important to update the existing id
+        this.id = data.id;
+      });
+  }
   empGeneralFormInitiation(): void {
     this.empGeneral = this.fB.group({
       firstName: [
@@ -87,34 +117,7 @@ export class EmpDetailsService {
       empSkill: this.empSkillArray,
       empExperience: this.empExperienceArray
     });
-    this.employeeFetchDetailsService.getEmployee(1)
-      .subscribe((data) => {
-        console.log(data);
-        this.empGeneral.patchValue(data.empGeneral);
-        // this.empContact.email.patchValue(data.empContact);
-        data.empSkill.forEach((element, i) => {
-          if ( data.empSkill.length - 1 !== i) {
-            this.addskill();
-          }
-        });
-        this.empSkillArray.patchValue(data.empSkill);
 
-        data.empExperience.forEach((element, i) => {
-          if ( data.empExperience.length - 1 !== i) {
-            this.addExperience();
-          }
-        });
-        this.empExperienceArray.patchValue(data.empExperience);
-
-        data.empContact.socialInfo.forEach((element, i) => {
-          if ( data.empContact.socialInfo.length - 1 !== i) {
-            this.addSocialInfo();
-          }
-        });
-        this.empContact.patchValue(data.empContact);
-        // important to update the existing id
-        this.id = data.id;
-      });
   }
   addSocialInfo(): void {
     const pattern = '^[A-za-z]*[\][A-za-z]*$';

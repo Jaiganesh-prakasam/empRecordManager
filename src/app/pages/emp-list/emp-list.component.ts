@@ -55,17 +55,30 @@ export class EmpListComponent implements OnInit {
   constructor(
     private employeeFetchDetailsService: EmployeeFetchDetailsService,
     private router: Router) {
-    this.employeeFetchDetailsService.getEmployees()
-      .subscribe(heroes => {
-        this.employees = heroes;
-        console.log(heroes);
-      });
+      this.fetchEmployee();
   }
 
   ngOnInit(): void {
   }
+  fetchEmployee(): void {
+    this.employeeFetchDetailsService.getEmployees()
+    .subscribe(heroes => {
+      this.employees = heroes;
+      console.log(heroes);
+    });
+  }
   addEmplyee(): void {
-    this.router.navigate(['/routing/emp-details']);
+    this.router.navigate(['/routing/emp-details'], { queryParams: { orderType: 'add' } });
+  }
+  updateEmplyee(id: number): void {
+    // console.log(id);
+    this.router.navigate(['/routing/emp-details'], { queryParams: { orderType: 'update', id  } });
+  }
+  deleteEmployee(id): void {
+    this.employeeFetchDetailsService.deleteEmployee(id).subscribe((data) => {
+      console.log(data);
+      this.fetchEmployee();
+    });
   }
 
 }

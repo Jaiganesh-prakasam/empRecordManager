@@ -1,4 +1,18 @@
-<button (click)="addEmplyee()">
-  Add Employee
-</button>
+<div class="emp-list-update-delete" >
+  <select name="emp-list" #empList >
+    <option *ngFor="let employee  of this.employees" value={{employee.id}}>
+      {{employee.id}} {{employee.empGeneral.fullName}}
+    </option>
+  </select>
+  <button (click)="updateEmplyee(empList.value)">
+    Update Employee
+  </button>
+  <button (click)="deleteEmployee(empList.value)">
+    Delete Employee
+  </button>
+</div>
+  <button class="emp-list-add" (click)="addEmplyee()">
+    Add Employee
+  </button>
+  Employee Table:
 <app-i-table [tableData]="employees" [settings]="employeesSettings"> </app-i-table>

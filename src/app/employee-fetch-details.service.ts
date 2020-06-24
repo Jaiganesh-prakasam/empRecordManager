@@ -3,6 +3,7 @@ import { EmpDetails } from './sharedInterface/emp-details';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { EmpDetailsService } from './pages/emp-details/emp-details.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -34,6 +35,16 @@ export class EmployeeFetchDetailsService {
       catchError(this.handleError<EmpDetails>('addEmployee'))
     );
   }
+
+  /** DELETE: delete the employee from the server */
+  deleteEmployee(employeeID: number): Observable<EmpDetails> {
+    const url = `${this.employeesUrl}/${employeeID}`;
+    return this.http.delete<EmpDetails>(url, this.httpOptions).pipe(
+      tap(_ => console.log(_)),
+      catchError(this.handleError<EmpDetails>('deleteHero'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
