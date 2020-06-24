@@ -1,10 +1,10 @@
 # EmpRecordManager
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
-A CRUD sample application.
-Features:
-Generic table , wizard , error-message display components.
-Form builder, Form Array, Form control to both add and update records.
+> A CRUD sample application.
+> Features:
+* Generic table , wizard , error-message display components.
+* Form builder, Form Array, Form control to both add and update records.
 
 ## Development server
 
