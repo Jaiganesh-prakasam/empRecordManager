@@ -46,6 +46,21 @@ export class IWizardComponent implements OnInit, AfterViewInit {
       }
     }
   }
+  validityChecker(id: string) {
+    const element = this.tabData.filter((data) => data.id === this.selectedStep);
+    const validityArray = element[0].formValidation;
+    // to return true as default when no validation needed
+    console.log(element);
+    if (!validityArray) {
+      this.wizardNavSelector(id);
+    } else {
+      const checkValidity = validityArray
+        .filter((formGroupOrControlOrArray) => formGroupOrControlOrArray.valid);
+      if (checkValidity.length === validityArray.length) {
+        this.wizardNavSelector(id);
+      }
+    }
+  }
 
   nextWizard(selectedStep: string): void {
     const index = this.tabData.findIndex((x) => x.id === selectedStep);

@@ -19,6 +19,7 @@ export class IWizardStepsComponent implements OnInit, AfterViewInit {
   @Input() isFirst: boolean;
   @Input() isLast: boolean;
   @Input() stepName: string;
+  @Input() validity: Array<any>;
   @Output() next = new EventEmitter();
   @Output() previous = new EventEmitter();
   constructor() { }
@@ -26,7 +27,7 @@ export class IWizardStepsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
   ngAfterViewInit(): void {
-    // console.log(this.isFirst);
+    console.log(this.validity);
     // console.log(this.isLast);
     // console.log(this.myChild);
   }
@@ -35,6 +36,21 @@ export class IWizardStepsComponent implements OnInit, AfterViewInit {
   }
   nextPage() {
     this.next.emit();
+  }
+
+  validityChecker() {
+    // to return true as default when no validation needed
+    if (!this.validity) {
+      return true;
+    } else {
+      const checkValidity = this.validity
+        .filter((formGroupOrControlOrArray) => formGroupOrControlOrArray.valid);
+      if (checkValidity.length !== this.validity.length) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 
 }
