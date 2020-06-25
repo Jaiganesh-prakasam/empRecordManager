@@ -1,9 +1,9 @@
 <h1>
   Skills
 </h1>
-<form [formGroup]="empDetailsService.empSkill">
+<form [formGroup]="form">
   <ng-container formArrayName="empSkillArray">
-    <section *ngFor="let _ of empDetailsService.empSkillArray.controls; index as i" class="emp-skill-card">
+    <section *ngFor="let _ of skillFormArray.controls; index as i" class="emp-skill-card">
       <ng-container [formGroupName]="i"  >
         <label>
           skill:
@@ -11,32 +11,29 @@
         <input
           type="text"
           formControlName="skill"
-          (keyup)="empDetailsService.getSkill($event, i)"
+          (keyup)="getSkill($event, i)"
           id="skill"
           list="dynmic-skills"
           autocomplete="off"
-          (blur)="empDetailsService.storeNewSkill(i)">
+          (blur)="storeNewSkill(i)">
         <datalist id="dynmic-skills">
           <option *ngFor="let item of empDetailsService.skillListOptions" [value]="item">{{item}}</option>
         </datalist>
-        <control-messages [control]="empDetailsService.empSkillArray.controls[i].get('skill')"></control-messages>
+        <control-messages [control]="skillFormArray.controls[i].get('skill')"></control-messages>
         <label>
           rate: (out of 10)
         </label>
         <input type="number" formControlName="rate">
-        <div *ngIf="empDetailsService.empSkillArray.controls[i].get('rate').invalid && (empDetailsService.empSkillArray.controls[i].get('rate').dirty || empDetailsService.empSkillArray.controls[i].get('rate').touched)">
-          {{empDetailsService.empSkillArray.controls[i].get('rate').errors | json}}
-        </div>
-        <control-messages [control]="empDetailsService.empSkillArray.controls[i].get('rate')"></control-messages>
+        <control-messages [control]="skillFormArray.controls[i].get('rate')"></control-messages>
       </ng-container>
       <div class="emp-skill-button">
-        <button *ngIf="empDetailsService.empSkillArray.controls.length > 1" (click)="empDetailsService.deleteSkill(i)">remove</button>
+        <button *ngIf="skillFormArray.controls.length > 1" (click)="deleteSkill.emit(i)">remove</button>
       </div>
     </section>
   </ng-container>
 </form>
 <div class="emp-skill-button">
-  <button (click)="empDetailsService.addskill()">Add skill</button>
+  <button (click)="addSkill.emit()">Add skill</button>
 </div>
 <div *ngFor="let i of empDetailsService.errorFormArray">
   {{i}}

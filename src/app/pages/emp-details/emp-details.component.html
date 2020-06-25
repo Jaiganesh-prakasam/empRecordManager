@@ -1,14 +1,27 @@
 <i-wizard [selectedStep]="'step1'" [tabData]="stepsData">
   <div id="step1">
-    <app-emp-general></app-emp-general>
+    <app-emp-general [form]="empGeneralFormGroup"></app-emp-general>
   </div>
   <div id="step2">
-    <app-emp-contact></app-emp-contact>
+    <app-emp-contact
+      [form]="empContactFormGroup"
+      [socialInfoFormArray]="empSocialInfoFormArray"
+      (addSocialInfo)="onAddSocialInfo()"
+      (deleteSocialInfo)="onDeleteSocialInfo($event)"></app-emp-contact>
   </div>
   <div id="step3">
-    <app-emp-experience></app-emp-experience>
+    <app-emp-experience
+      [form]="empExperienceFormGroup"
+      [experienceFormArray]="empExperienceFormArray"
+      (addExperience)="onAddExperience()"
+      (deleteExperience)="onDeleteExperience($event)">
+    </app-emp-experience>
   </div>
   <div id="step4">
-    <app-emp-skill></app-emp-skill>
+    <app-emp-skill
+    [form]="empSkillFormGroup"
+    [skillFormArray]="empSkillFormArray"
+    (addSkill)="onAddSkill()"
+    (deleteSkill)="onDeleteSkill($event)"></app-emp-skill>
   </div>
 </i-wizard>

@@ -1,9 +1,9 @@
 <h1>
   Experience
 </h1>
-<form [formGroup]="empDetailsService.empExperienceGroup">
+<form [formGroup]="form">
   <ng-container formArrayName="empExperienceArray">
-    <section *ngFor="let n of empDetailsService.empExperienceArray.controls; index as i" class="experience-card" >
+    <section *ngFor="let n of experienceFormArray.controls; index as i" class="experience-card" >
       <ng-container [formGroupName]="i"  >
         <h2>
           {{'Company' + ' ' + (i+1) + ':' }}
@@ -12,65 +12,65 @@
           company name:
         </label>
         <input type="text" formControlName="companyName" >
-        <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('companyName')"></control-messages>
+        <control-messages [control]="experienceFormArray.controls[i].get('companyName')"></control-messages>
         <div formGroupName="location">
           <label>
             city:
           </label>
           <input type="text" formControlName="city" >
-          <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('location').get('city')"></control-messages>
+          <control-messages [control]="experienceFormArray.controls[i].get('location').get('city')"></control-messages>
           <label>
             country:
           </label>
           <input type="text" formControlName="country">
-          <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('location').get('country')"></control-messages>
+          <control-messages [control]="experienceFormArray.controls[i].get('location').get('country')"></control-messages>
         </div>
         <label>
           company Url:
         </label>
         <input type="text" formControlName="companyUrl">
-        <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('companyUrl')"></control-messages>
+        <control-messages [control]="experienceFormArray.controls[i].get('companyUrl')"></control-messages>
         <label>
           role:
         </label>
         <input
           type="text"
           formControlName="role"
-          (keyup)="empDetailsService.getRole($event, i)"
+          (keyup)="getRole($event, i)"
           id="userRole"
           list="dynmicUserIds"
-          (blur)="empDetailsService.storeNewRole(i)">
+          (blur)="storeNewRole(i)">
         <datalist id="dynmicUserIds">
           <option *ngFor="let item of empDetailsService.roleList" [value]="item">{{item}}</option>
         </datalist>
-        <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('role')"></control-messages>
+        <control-messages [control]="experienceFormArray.controls[i].get('role')"></control-messages>
         <label>
           from
         </label>
         <input type="date" formControlName="fromDate">
-        <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('fromDate')"></control-messages>
+        <control-messages [control]="experienceFormArray.controls[i].get('fromDate')"></control-messages>
         <label>
           to
         </label>
         <input type="date" formControlName="toDate">
-        <control-messages [control]="empDetailsService.empExperienceArray.controls[i].get('toDate')"></control-messages>
+        <control-messages [control]="experienceFormArray.controls[i].get('toDate')"></control-messages>
         <label>
           experience
         </label>
         <div class="text-container" >
           {{
             experienceCalculation(
-              empDetailsService.empExperienceArray.controls[i].value.fromDate ,
-              empDetailsService.empExperienceArray.controls[i].value.toDate)
+              experienceFormArray.controls[i].value.fromDate ,
+              experienceFormArray.controls[i].value.toDate)
           }}
         </div>
       </ng-container>
       <div class="emp-experience">
-        <button *ngIf="empDetailsService.empExperienceArray.controls.length > 1" (click)="empDetailsService.deleteExperience(i)">remove</button>
+        <button *ngIf="experienceFormArray.controls.length > 1" (click)="deleteExperience.emit(i)">remove</button>
       </div>
     </section>
   </ng-container>
 </form>
 <div class="emp-experience">
-  <button style="justify-self: flex-end;" (click)="empDetailsService.addExperience()">Add company</button>
+  <button style="justify-self: flex-end;" (click)="addExperience.emit()">Add company</button>
 </div>

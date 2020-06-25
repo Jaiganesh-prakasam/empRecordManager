@@ -66,10 +66,10 @@ export class EmpListComponent implements OnInit {
       this.employees = employees.sort((employee1, employee2) => Number(employee1.id) - Number(employee2.id));
     });
   }
-  addEmplyee(): void {
+  addEmployee(): void {
     this.router.navigate(['/routing/emp-details'], { queryParams: { orderType: 'add' } });
   }
-  updateEmplyee(id: number): void {
+  updateEmployee(id: number): void {
     // console.log(id);
     this.router.navigate(['/routing/emp-details'], { queryParams: { orderType: 'update', id  } });
   }

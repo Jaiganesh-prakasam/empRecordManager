@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EmpDetailsService } from '../emp-details.service';
+import { FormGroup, FormArray } from '@angular/forms';
 @Component({
   selector: 'app-emp-skill',
   templateUrl: './emp-skill.component.html',
@@ -17,13 +18,21 @@ import { EmpDetailsService } from '../emp-details.service';
 // Total Year of Experience:
 //   Calculate from  work experiences
 export class EmpSkillComponent implements OnInit {
-
-  lastkeydown = 0;
+  @Input()form: FormGroup;
+  @Input()skillFormArray: FormArray;
+  @Output()addSkill = new EventEmitter();
+  @Output()deleteSkill = new EventEmitter();
   constructor(public empDetailsService: EmpDetailsService) {
 
   }
 
   ngOnInit(): void {
+  }
+  getSkill($event, i): void {
+    return this.empDetailsService.getSkill($event, i);
+  }
+  storeNewSkill(i) {
+    return this.empDetailsService.storeNewSkill(i);
   }
 
 

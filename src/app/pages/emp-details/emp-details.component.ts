@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpDetailsService } from './emp-details.service';
+import { FormGroup, FormArray } from '@angular/forms';
 @Component({
   selector: 'app-emp-details',
   templateUrl: './emp-details.component.html',
@@ -8,22 +9,51 @@ import { EmpDetailsService } from './emp-details.service';
   providers: [ EmpDetailsService ]
 })
 export class EmpDetailsComponent implements OnInit {
+  get empGeneralFormGroup(): FormGroup {
+    return this.empDetailsService.empGeneral;
+  }
+  get empContactFormGroup(): FormGroup {
+    return this.empDetailsService.empContact;
+  }
+  get empSocialInfoFormArray(): FormArray {
+    return this.empDetailsService.socialInfo;
+  }
+  get empExperienceFormGroup(): FormGroup {
+    return this.empDetailsService.empExperienceGroup;
+  }
+  get empExperienceFormArray(): FormArray {
+    return this.empDetailsService.empExperienceArray;
+  }
+  get empSkillFormGroup(): FormGroup {
+    return this.empDetailsService.empSkill;
+  }
+  get empSkillFormArray(): FormArray {
+    return this.empDetailsService.empSkillArray;
+  }
   stepsData = [
     {
       id: 'step1',
-      title: 'Employee General Details'
+      title: 'Employee General Details',
+      formValidation: [this.empGeneralFormGroup]
     },
     {
       id: 'step2',
-      title: 'Contact'
+      title: 'Contact',
+      formValidation: [
+        this.empContactFormGroup.get('email'),
+        this.empContactFormGroup.get('phone'),
+        this.empSocialInfoFormArray
+      ]
     },
     {
       id: 'step3',
-      title: 'Experience'
+      title: 'Experience',
+      formValidation: [this.empExperienceFormArray]
     },
     {
       id: 'step4',
-      title: 'Skills'
+      title: 'Skills',
+      formValidation: [this.empSkillFormArray]
     },
   ];
   constructor(
@@ -41,63 +71,23 @@ export class EmpDetailsComponent implements OnInit {
       }
     });
   }
-  post() {
-    const temp = {
-      empGeneral: {
-        firstName: 'Test',
-        lastName: 'Tailor',
-        fullName: 'John Doe Tailor',
-        dob: '19-09-1994',
-        age: 26
-      },
-      empContact: {
-        email: 'xyz@gmail.com',
-        phone: '979-979-9797',
-        socialInfo: {
-          url: '/john-doe',
-          type: 'facebook'
-        }
-      },
-      empSkill: [
-        {
-          skill: 'angular',
-          rate: 7.5
-        },
-        {
-          skill: 'javascript',
-          rate: 7
-        }
-      ],
-      empExperience: [
-        {
-          companyName: 'abc1',
-          location: {
-            city: 'chennai',
-            country: 'india',
-          },
-          companyUrl: 'www.abc1.com',
-          role: 'junior developer',
-          fromDate: '26-06-2015',
-          toDate: '31-03-2018',
-          experience: 3
-        },
-        {
-          companyName: 'abc2',
-          location: {
-            city: 'chennai',
-            country: 'india'
-          },
-          companyUrl: 'www.abc2.com',
-          role: 'senior developer',
-          fromDate: '01-04-2018',
-          toDate: 'present',
-          experience: 2
-        }
-      ]
-    };
-    // this.employeeDetailsService.addHero(temp as EmpDetails).subscribe(employee => {
-    // this.employees = [...this.employees, employee];
-    // });
-  }
 
+  onAddExperience(): void {
+    this.empDetailsService.addExperience();
+  }
+  onDeleteExperience(index: number): void {
+    this.empDetailsService.deleteExperience(index);
+  }
+  onAddSocialInfo( ): void {
+    this.empDetailsService.addSocialInfo();
+  }
+  onDeleteSocialInfo(index: number): void {
+    this.empDetailsService.deleteSocialInfo(index);
+  }
+  onAddSkill(): void {
+    this.empDetailsService.addskill();
+  }
+  onDeleteSkill(index): void {
+    this.empDetailsService.deleteSkill(index);
+  }
 }

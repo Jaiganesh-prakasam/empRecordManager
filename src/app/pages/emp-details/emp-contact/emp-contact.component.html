@@ -1,40 +1,40 @@
 <h1>
   Contacts
 </h1>
-<form [formGroup]="empDetailsService.empContact">
+<form [formGroup]="form">
   <label>
     Email:
   </label>
   <input type="text" formControlName="email">
-  <control-messages [control]="empDetailsService.empContact.get('email')"></control-messages>
+  <control-messages [control]="form.get('email')"></control-messages>
   <label>
     Phone:
   </label>
   <input type="text" formControlName="phone">
-  <control-messages [control]="empDetailsService.empContact.get('phone')"></control-messages>
+  <control-messages [control]="form.get('phone')"></control-messages>
   <ng-container formArrayName="socialInfo">
     <div style="margin-bottom:8px">
       Social Information:
     </div>
-    <section  *ngFor="let _ of empDetailsService.socialInfo.controls; index as i" class="social-info">
+    <section  *ngFor="let _ of socialInfoFormArray.controls; index as i" class="social-info">
       <ng-container [formGroupName]="i"  >
         <label>
           Url:
         </label>
         <input type="text" formControlName="url">
-        <control-messages [control]="empDetailsService.socialInfo.controls[i].get('url')"></control-messages>
+        <control-messages [control]="socialInfoFormArray.controls[i].get('url')"></control-messages>
         <label>
           type:
         </label>
         <input type="text" formControlName="type">
-        <control-messages [control]="empDetailsService.socialInfo.controls[i].get('type')"></control-messages>
+        <control-messages [control]="socialInfoFormArray.controls[i].get('type')"></control-messages>
       </ng-container>
       <div class="button-container">
-        <button *ngIf="empDetailsService.socialInfo.controls.length > 1" (click)="empDetailsService.deleteSocialInfo(i)">remove</button>
+        <button *ngIf="socialInfoFormArray.controls.length > 1" (click)="deleteSocialInfo.emit(i)">remove</button>
       </div>
     </section>
     <div class="button-container">
-      <button (click)="empDetailsService.addSocialInfo()">Add social information</button>
+      <button (click)="addSocialInfo.emit()">Add social information</button>
     </div>
   </ng-container>
 

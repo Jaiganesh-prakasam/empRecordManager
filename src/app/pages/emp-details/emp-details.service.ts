@@ -105,11 +105,10 @@ export class EmpDetailsService {
     });
   }
   empSkillFormInitiation(): void {
-    this.empSkillArray = this.fB.array([]);
+    this.empSkillArray = this.fB.array([this.skillGroup()]);
     this.empSkill = this.fB.group({
       empSkillArray : this.empSkillArray
     });
-    this.addskill();
   }
   empDetailsFormInitiation(): void {
     this.empDetails = this.fB.group ({
@@ -134,10 +133,10 @@ export class EmpDetailsService {
       this.socialInfo.removeAt(index);
     }
   }
-  addExperience(): void {
+  public addExperience(): void {
     this.empExperienceArray.push( this.experienceDetails() );
   }
-  experienceDetails(): FormGroup {
+  private experienceDetails(): FormGroup {
     return this.fB.group({
       companyName: ['', [Validators.required, Validators.min(3) , Validators.max(25)]],
       location: this.fB.group({
@@ -151,7 +150,7 @@ export class EmpDetailsService {
       experience: [{value: '', disabled: true}, [Validators.required]],
     });
   }
-  deleteExperience(index): void {
+  deleteExperience(index: number): void {
     if (this.empExperienceArray.length > 1) {
       this.empExperienceArray.removeAt(index);
     }
@@ -174,12 +173,14 @@ export class EmpDetailsService {
       this.role.push(enteredRole);
     }
   }
-  addskill(): void {
-    const tempGroup = this.fB.group({
+  skillGroup(): FormGroup {
+    return this.fB.group({
       skill: ['', [Validators.required, Validators.min(3) , Validators.max(25)]],
       rate: ['', [Validators.required, ValidationService.rating()]],
     });
-    this.empSkillArray.push( tempGroup );
+  }
+  addskill(): void {
+    this.empSkillArray.push( this.skillGroup() );
   }
   deleteSkill(index): void {
     if (this.empSkillArray.length > 1) {
