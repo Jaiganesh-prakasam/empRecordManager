@@ -14,7 +14,9 @@
       [form]="empExperienceFormGroup"
       [experienceFormArray]="empExperienceFormArray"
       (addExperience)="onAddExperience()"
-      (deleteExperience)="onDeleteExperience($event)">
+      (deleteExperience)="onDeleteExperience($event)"
+      (getRole)="onGetRole($event)"
+      (storeNewRole)="onStoreNewRole($event)">
     </app-emp-experience>
   </div>
   <div id="step4">
@@ -22,6 +24,8 @@
     [form]="empSkillFormGroup"
     [skillFormArray]="empSkillFormArray"
     (addSkill)="onAddSkill()"
-    (deleteSkill)="onDeleteSkill($event)"></app-emp-skill>
+    (deleteSkill)="onDeleteSkill($event)"
+    (getSkill)="onGetSkill($event)"
+    (storeNewSkill)="onStoreNewSkill($event)"></app-emp-skill>
   </div>
 </i-wizard>

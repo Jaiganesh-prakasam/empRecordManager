@@ -36,10 +36,10 @@
         <input
           type="text"
           formControlName="role"
-          (keyup)="getRole($event, i)"
+          (keyup)="getRole.emit(i)"
           id="userRole"
           list="dynmicUserIds"
-          (blur)="storeNewRole(i)">
+          (blur)="storeNewRole.emit(i)">
         <datalist id="dynmicUserIds">
           <option *ngFor="let item of empDetailsService.roleList" [value]="item">{{item}}</option>
         </datalist>

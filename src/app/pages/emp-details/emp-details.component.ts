@@ -78,7 +78,13 @@ export class EmpDetailsComponent implements OnInit {
   onDeleteExperience(index: number): void {
     this.empDetailsService.deleteExperience(index);
   }
-  onAddSocialInfo( ): void {
+  onGetRole(index: number): void {
+    return this.empDetailsService.getRole(index);
+  }
+  onStoreNewRole(index: number): void {
+    return this.empDetailsService.storeNewRole(index);
+  }
+  onAddSocialInfo(): void {
     this.empDetailsService.addSocialInfo();
   }
   onDeleteSocialInfo(index: number): void {
@@ -87,7 +93,13 @@ export class EmpDetailsComponent implements OnInit {
   onAddSkill(): void {
     this.empDetailsService.addskill();
   }
-  onDeleteSkill(index): void {
+  onDeleteSkill(index: number): void {
     this.empDetailsService.deleteSkill(index);
+  }
+  onGetSkill(index: number): void {
+    return this.empDetailsService.getSkill(index);
+  }
+  onStoreNewSkill(index: number) {
+    return this.empDetailsService.storeNewSkill(index);
   }
 }

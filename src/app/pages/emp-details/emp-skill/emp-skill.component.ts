@@ -22,17 +22,13 @@ export class EmpSkillComponent implements OnInit {
   @Input()skillFormArray: FormArray;
   @Output()addSkill = new EventEmitter();
   @Output()deleteSkill = new EventEmitter();
+  @Output()getSkill = new EventEmitter();
+  @Output()storeNewSkill = new EventEmitter();
   constructor(public empDetailsService: EmpDetailsService) {
 
   }
 
   ngOnInit(): void {
-  }
-  getSkill($event, i): void {
-    return this.empDetailsService.getSkill($event, i);
-  }
-  storeNewSkill(i) {
-    return this.empDetailsService.storeNewSkill(i);
   }
 
 

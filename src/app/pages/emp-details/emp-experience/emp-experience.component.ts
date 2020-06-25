@@ -28,6 +28,8 @@ export class EmpExperienceComponent implements OnInit {
   @Input() experienceFormArray: FormArray;
   @Output() addExperience = new EventEmitter();
   @Output() deleteExperience = new EventEmitter();
+  @Output() getRole = new EventEmitter();
+  @Output() storeNewRole = new EventEmitter();
   constructor(
     public empDetailsService: EmpDetailsService
   ) {
@@ -54,11 +56,6 @@ export class EmpExperienceComponent implements OnInit {
       return 'select from and to date';
     }
   }
-  getRole($event, i): void {
-    return this.empDetailsService.getRole($event, i);
-  }
-  storeNewRole(i): void {
-    return this.empDetailsService.storeNewRole(i);
-  }
+
 
 }

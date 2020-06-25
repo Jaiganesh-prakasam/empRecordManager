@@ -11,11 +11,11 @@
         <input
           type="text"
           formControlName="skill"
-          (keyup)="getSkill($event, i)"
+          (keyup)="getSkill.emit(i)"
           id="skill"
           list="dynmic-skills"
           autocomplete="off"
-          (blur)="storeNewSkill(i)">
+          (blur)="storeNewSkill.emit(i)">
         <datalist id="dynmic-skills">
           <option *ngFor="let item of empDetailsService.skillListOptions" [value]="item">{{item}}</option>
         </datalist>

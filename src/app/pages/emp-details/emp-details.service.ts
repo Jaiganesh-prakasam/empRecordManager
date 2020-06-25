@@ -156,7 +156,7 @@ export class EmpDetailsService {
     }
   }
 
-  getRole($event, index): void {
+  getRole(index): void {
     const enteredRole = this.empExperienceArray.controls[index].get('role').value;
     this.roleList = [];
     if (enteredRole.length > 2) {
@@ -187,7 +187,7 @@ export class EmpDetailsService {
       this.empSkillArray.removeAt(index);
     }
   }
-  getSkill($event, index): void {
+  getSkill(index): void {
     const enteredSkill = this.empSkillArray.controls[index].get('skill').value;
     this.skillListOptions = [];
     if (enteredSkill.length > 2) {
