@@ -47,9 +47,8 @@ export class EmpListComponent implements OnInit {
             const  ageDt = new Date(diffMs);
             return Math.abs(ageDt.getUTCFullYear() - 1970);
           }
-          console.log(date);
         }
-      },
+      }
     ]
   };
   constructor(

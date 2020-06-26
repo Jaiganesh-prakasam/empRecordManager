@@ -218,7 +218,6 @@ export class EmpDetailsService {
       this.errorFormArray.push('Employee general detils invalid');
       count ++;
     }
-    console.log(this.socialInfo.invalid);
     if (
       this.empContact.get('email').invalid ||
       this.empContact.get('phone').invalid ||
