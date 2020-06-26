@@ -18,7 +18,26 @@
   <nav class="pagination" *ngIf="totalDivisions && totalDivisions.length> 0">
     <div (click)="jumpToFirst()" >&laquo;</div>
     <div (click)="previous()">&#8249;</div>
-    <div id={{i+1}} (click)="jumToThisPage(i+1)" *ngFor="let division of totalDivisions;let i = index">{{i +1}}</div>
+    <!-- first button on selecting last page -->
+    <ng-container *ngFor="let division of totalDivisions;let i = index">
+      <div id={{i+1}} *ngIf="pageNumberSelected && pageNumberSelected === totalDivisions.length && pageNumberSelected - 3  ===  i" (click)="jumToThisPage(i+1)" >{{i +1}}</div>
+    </ng-container>
+    <!-- first button on selecting any other page but the last one -->
+    <ng-container *ngFor="let division of totalDivisions;let i = index">
+      <div id={{i+1}} *ngIf="pageNumberSelected && pageNumberSelected !== 1  && (pageNumberSelected - 2 ===  i ) " (click)="jumToThisPage(i+1)" >{{i +1}}</div>
+    </ng-container>
+    <!-- always the selected page -->
+    <ng-container *ngFor="let division of totalDivisions ;let i = index">
+      <div id={{i+1}} *ngIf="pageNumberSelected && pageNumberSelected ===  i+1" (click)="jumToThisPage(i+1)" >{{i +1}}</div>
+    </ng-container>
+    <!-- last button on selecting any other page but the first page -->
+    <ng-container *ngFor="let division of totalDivisions;let i = index">
+      <div id={{i+1}} *ngIf="pageNumberSelected && pageNumberSelected !== totalDivisions.length && pageNumberSelected + 1 ===  i+1" (click)="jumToThisPage(i+1)" >{{i +1}}</div>
+    </ng-container>
+    <!-- last button on selecting first page -->
+    <ng-container *ngFor="let division of totalDivisions;let i = index">
+      <div id={{i+1}} *ngIf="pageNumberSelected && pageNumberSelected === 1  && (pageNumberSelected + 2 ===  i+1 ) " (click)="jumToThisPage(i+1)" >{{i +1}}</div>
+    </ng-container>
     <div (click)="next()">&#8250;</div>
     <div (click)="jumpToLast()">&raquo;</div>
   </nav>

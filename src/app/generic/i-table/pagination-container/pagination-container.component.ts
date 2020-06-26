@@ -35,7 +35,6 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
   valueChanged(tempNumberOfRows: string): void {
     this.numberOfRows = tempNumberOfRows;
     this.numberOfButtons(Number(tempNumberOfRows));
-    console.log(tempNumberOfRows);
   }
   numberOfButtons(tempNumberOfRows: number): void {
     if (this.pageNumberSelected && document.getElementById(String(this.pageNumberSelected))) {
@@ -98,8 +97,10 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
   jumToThisPage(pageNumber: number): void {
     document.getElementById(String(this.pageNumberSelected)).classList.remove('active');
     this.pageNumberSelected = pageNumber;
-    document.getElementById(String(this.pageNumberSelected)).classList.add('active');
     this.itemFromTo.emit([(pageNumber - 1) * Number(this.numberOfRows), pageNumber * Number(this.numberOfRows)]);
+    setTimeout(() => {
+      document.getElementById(String(this.pageNumberSelected)).classList.add('active');
+    }, 0);
   }
 
   searchFilter(x) {
