@@ -14,7 +14,7 @@
   </i-wizard-steps>
 </section>
 <div class="dot" >
-  <div style="min-width: 20%;" *ngFor="let i of tabData" (click)="validityChecker(i.id)">
+  <div style="min-width: 20%;" *ngFor="let i of tabData" (click)="currentStepValidityChecker(i.id)">
     <div id="nav-{{ i.id }}" >
       <div>
         {{i.title}}

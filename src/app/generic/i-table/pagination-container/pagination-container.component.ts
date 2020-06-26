@@ -98,6 +98,7 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
     document.getElementById(String(this.pageNumberSelected)).classList.remove('active');
     this.pageNumberSelected = pageNumber;
     this.itemFromTo.emit([(pageNumber - 1) * Number(this.numberOfRows), pageNumber * Number(this.numberOfRows)]);
+    // To add the class after the button is actually added by the program
     setTimeout(() => {
       document.getElementById(String(this.pageNumberSelected)).classList.add('active');
     }, 0);

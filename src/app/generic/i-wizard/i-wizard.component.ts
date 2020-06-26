@@ -46,18 +46,45 @@ export class IWizardComponent implements OnInit, AfterViewInit {
       }
     }
   }
-  validityChecker(id: string) {
+  otherStepValidityChecker(toStepId: string): void {
+    const currentPageIndex = this.tabData.findIndex((data) => data.id === this.selectedStep);
+    const toPageIndex = this.tabData.findIndex((data) => data.id === toStepId);
+    console.log(currentPageIndex , toPageIndex);
+    // to navigate to some previous page or to the immediate next page
+    if (currentPageIndex > toPageIndex || (currentPageIndex + 1 === toPageIndex)) {
+      this.wizardNavSelector(toStepId);
+    }
+    // to navigate to some other page
+    else if (currentPageIndex < toPageIndex) {
+      let totalStepsCount = 0;
+      let validStepsCount = 0;
+      //  all the step in between should be valid
+      for ( let i = currentPageIndex + 1; i < toPageIndex; i++) {
+        totalStepsCount ++;
+        const validityArray = this.tabData[i].formValidation;
+        const checkValidity = validityArray
+        .filter((formGroupOrControlOrArray) => formGroupOrControlOrArray.valid);
+        if (checkValidity.length === validityArray.length) {
+          validStepsCount ++;
+        }
+      }
+      if (totalStepsCount === validStepsCount) {
+        this.wizardNavSelector(toStepId);
+      }
+    }
+  }
+  currentStepValidityChecker(toStepId: string): void {
     const element = this.tabData.filter((data) => data.id === this.selectedStep);
     const validityArray = element[0].formValidation;
     // to return true as default when no validation needed
     console.log(element);
     if (!validityArray) {
-      this.wizardNavSelector(id);
+      this.wizardNavSelector(toStepId);
     } else {
       const checkValidity = validityArray
         .filter((formGroupOrControlOrArray) => formGroupOrControlOrArray.valid);
       if (checkValidity.length === validityArray.length) {
-        this.wizardNavSelector(id);
+        this.otherStepValidityChecker(toStepId);
       }
     }
   }

@@ -57,7 +57,7 @@ export class ValidationService {
   static socialMediaUrlValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const urlMatch = control.value.match(
-        /^[A-za-z0-9]+\\[A-za-z0-9]{1}[A-za-z0-9]*$/
+        /^[A-za-z0-9]+\/[A-za-z0-9]{1}[A-za-z0-9]*$/
         );
       // console.log(urlMatch);
       return urlMatch ? null : {socialMediaUrlMatch: false};
@@ -98,7 +98,7 @@ export class ValidationService {
       invalidPhoneNumber: 'please enter your phone number like 111-111-1111, only 10 digits allowed',
       socialMediaNotUnique: 'social media already exist',
       futureDate: 'Future date not allowed',
-      socialMediaUrlMatch: 'url example abc\\abc',
+      socialMediaUrlMatch: 'url example abc/cdf',
       onlyAlphabets: 'only alphabets allowed, Please don\'t enter special characters or numbers',
       rateGreaterThanTen: 'Enter a rate less than or equal to 10'
     };

@@ -22,7 +22,7 @@ export class InMemoryDataService implements InMemoryDbService {
           phone: '979-979-9797',
           socialInfo: [
             {
-              url: 'a/john-doe',
+              url: 's/s',
               type: 'facebook',
             },
           ],
@@ -39,7 +39,7 @@ export class InMemoryDataService implements InMemoryDbService {
         ],
         empExperience: [
           {
-            companyName: 'abc1',
+            companyName: 's',
             location: {
               city: 'chennai',
               country: 'india',
