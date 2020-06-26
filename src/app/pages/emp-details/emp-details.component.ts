@@ -54,7 +54,7 @@ export class EmpDetailsComponent implements OnInit {
       id: 'step4',
       title: 'Skills',
       formValidation: [this.empSkillFormArray]
-    },
+    }
   ];
   constructor(
     private route: ActivatedRoute,

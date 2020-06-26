@@ -27,7 +27,7 @@ export class IWizardStepsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
   ngAfterViewInit(): void {
-    console.log(this.validity);
+    // console.log(this.validity);
     // console.log(this.isLast);
     // console.log(this.myChild);
   }
@@ -41,7 +41,8 @@ export class IWizardStepsComponent implements OnInit, AfterViewInit {
   validityChecker() {
     // to return true as default when no validation needed
     if (!this.validity) {
-      return true;
+      console.log(this.validity);
+      return false;
     } else {
       const checkValidity = this.validity
         .filter((formGroupOrControlOrArray) => formGroupOrControlOrArray.valid);

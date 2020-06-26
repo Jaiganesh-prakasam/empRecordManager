@@ -30,6 +30,7 @@ export class IWizardComponent implements OnInit, AfterViewInit {
         buttonElement.style.display = 'block';
         navElement.classList.remove('actual-dot-incomplete');
         navElement.classList.add('actual-dot-complete');
+        navElement.scrollIntoView();
         buttonSelected = true;
         continue;
       } else {
@@ -77,7 +78,6 @@ export class IWizardComponent implements OnInit, AfterViewInit {
     const element = this.tabData.filter((data) => data.id === this.selectedStep);
     const validityArray = element[0].formValidation;
     // to return true as default when no validation needed
-    console.log(element);
     if (!validityArray) {
       this.wizardNavSelector(toStepId);
     } else {

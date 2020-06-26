@@ -2,19 +2,29 @@
   <ng-content ></ng-content>
 </div>
 <section style="min-width:100%; display: flex; justify-content: flex-end;">
-  <i-wizard-steps
-    id="button-{{ i.id }}"
-    (next)="nextWizard(i.id)"
-    (previous)="previousWizard(i.id)"
-    [stepName]="i.id"
-    [validity]="i.formValidation"
-    *ngFor="let i of tabData; let first = first; let last = last"
-    [isFirst]="first"
-    [isLast]="last" >
-  </i-wizard-steps>
+  <ng-container     *ngFor="let i of tabData; let first = first; let last = last">
+    <i-wizard-steps
+      id="button-{{ i.id }}"
+      (next)="nextWizard(i.id)"
+      (previous)="previousWizard(i.id)"
+      [stepName]="i.id"
+      [validity]="i.formValidation"
+      [isFirst]="first"
+      [isLast]="last" >
+    </i-wizard-steps>
+  </ng-container>
 </section>
 <div class="dot" >
-  <div style="min-width: 20%;" *ngFor="let i of tabData" (click)="currentStepValidityChecker(i.id)">
+  <div
+    [ngClass]="{
+      'one-step' : tabData.length === 1,
+      'two-steps' : tabData.length === 2,
+      'three-steps' : tabData.length === 3,
+      'four-steps' : tabData.length === 4,
+      'more-steps' : tabData.length > 4
+    }"
+    *ngFor="let i of tabData"
+    (click)="currentStepValidityChecker(i.id)">
     <div id="nav-{{ i.id }}" >
       <div>
         {{i.title}}
