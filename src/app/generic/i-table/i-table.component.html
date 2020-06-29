@@ -4,6 +4,6 @@
   [numberOfRows]="'5'"
   (itemFromTo)="arrayRange($event)"
   (searchString)="filterData($event)">
-  <app-table-container [tableData]="tempDataTable" [settings]="settings">
+  <app-table-container [tableData]="tempDataTable" [settings]="settings" (sortFieldName)="sortData($event)" >
   </app-table-container>
 </app-pagination-container>

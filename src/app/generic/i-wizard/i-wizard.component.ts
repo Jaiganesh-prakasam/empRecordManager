@@ -69,6 +69,7 @@ export class IWizardComponent implements OnInit, AfterViewInit {
           validStepsCount ++;
         }
       }
+      // navigate to selected step if all the pages in between are valid
       if (totalStepsCount === validStepsCount) {
         this.wizardNavSelector(toStepId);
       }
@@ -91,12 +92,10 @@ export class IWizardComponent implements OnInit, AfterViewInit {
 
   nextWizard(selectedStep: string): void {
     const index = this.tabData.findIndex((x) => x.id === selectedStep);
-    // console.log(this.tabData[index + 1].id);
     this.wizardNavSelector(this.tabData[index + 1].id);
   }
   previousWizard(selectedStep: string): void {
     const index = this.tabData.findIndex((x) => x.id === selectedStep);
-    // console.log(this.tabData[index - 1].id);
     this.wizardNavSelector(this.tabData[index - 1].id);
   }
 }

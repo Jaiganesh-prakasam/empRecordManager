@@ -9,7 +9,7 @@ import { ITableSharedFunctionService } from './i-table-shared-function.service';
   styleUrls: ['./i-table.component.scss'],
   providers: [ITableSharedFunctionService]
 })
-/***********************************
+/**
  * @tableData - Array of objects
  * @settings - headers, content level in the object
  */
@@ -24,7 +24,8 @@ export class ITableComponent implements OnInit, AfterViewInit, OnChanges {
   tableLength: number;
   constructor(private iTableSharedFunctionService: ITableSharedFunctionService) { }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+    console.log('change triggered');
+    //  to detect changes when the record deleted
     if (changes && this.startEndArrayState && this.tableData) {
       this.filterTableData = null;
       this.arrayRange(this.startEndArrayState, 'fromFilter');
@@ -34,9 +35,13 @@ export class ITableComponent implements OnInit, AfterViewInit, OnChanges {
 
   }
   ngAfterViewInit(): void {}
+  /**
+   * Function triggered intially by output event from the child component
+   * Function is also triggered after applying filter to the data
+   */
   arrayRange(startEndArray: number[], fromFilter?: string) {
+    console.log(startEndArray);
     this.startEndArrayState = startEndArray;
-    console.log(this.tableData);
     if (!this.filterTableData) {
       this.tempDataTable =  this.tableData.filter((x, i) => i >= startEndArray[0] && i < startEndArray[1] ? true : false);
       if (fromFilter === 'fromFilter') {
@@ -51,11 +56,10 @@ export class ITableComponent implements OnInit, AfterViewInit, OnChanges {
     }
   }
 
-  public filterData(x): void {
-    console.log(x);
+  public filterData(x: string): void {
+    // execute when search strig is available
     if (x[0] !== '') {
       const searchField = this.settings.fieldDefinition;
-      // console.log(searchField);
       let searchString = '';
       const subString = x[0].toLowerCase();
       this.filterTableData =  this.tableData.filter((item) => {
@@ -67,12 +71,16 @@ export class ITableComponent implements OnInit, AfterViewInit, OnChanges {
         });
         return matchFound.length > 0;
       });
-      this.arrayRange(this.startEndArrayState, 'fromFilter');
     } else {
       // to reinitialize the data when there is an empty search term
       this.filterTableData = null;
-      this.arrayRange(this.startEndArrayState, 'fromFilter');
     }
+    // move to the first page of table
+    const noOfRecords = this.startEndArrayState[1] - this.startEndArrayState[0];
+    this.arrayRange([0, noOfRecords], 'fromFilter');
+  }
+  public sortData(x: string): void {
+
   }
 
 }

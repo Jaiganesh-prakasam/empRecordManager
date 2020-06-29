@@ -43,13 +43,13 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
     const noOfPges = Math.ceil(this.totalRecordsSize / tempNumberOfRows);
     setTimeout(function() {
       this.totalDivisions = new Array(noOfPges);
+      // table will be initated only after emitting the array range
       this.itemFromTo.emit([0, tempNumberOfRows]);
       this.pageNumberSelected = 1;
-      setTimeout(() => {
-        document.getElementById('1').classList.add('active');
-      }, 0);
+      setTimeout(() => document.getElementById('1').classList.add('active'));
     }.bind(this), 0);
   }
+  // following function is triggered only from the parent using view child
   buttonsAfterFilter(totalRecordcount: number) {
     if (this.pageNumberSelected && document.getElementById(String(this.pageNumberSelected))) {
       document.getElementById(String(this.pageNumberSelected)).classList.remove('active');
@@ -59,11 +59,7 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
     setTimeout(function() {
       this.totalDivisions = new Array(noOfPges);
       this.pageNumberSelected = 1;
-      setTimeout(() => {
-        if (document.getElementById('1')) {
-          document.getElementById('1').classList.add('active');
-        }
-      }, 0);
+      setTimeout(() => document.getElementById('1') ? document.getElementById('1').classList.add('active') : null );
     }.bind(this), 0);
   }
   jumpToFirst(): void {
@@ -99,9 +95,7 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
     this.pageNumberSelected = pageNumber;
     this.itemFromTo.emit([(pageNumber - 1) * Number(this.numberOfRows), pageNumber * Number(this.numberOfRows)]);
     // To add the class after the button is actually added by the program
-    setTimeout(() => {
-      document.getElementById(String(this.pageNumberSelected)).classList.add('active');
-    }, 0);
+    setTimeout(() => document.getElementById(String(this.pageNumberSelected)).classList.add('active'));
   }
 
   searchFilter(x) {
