@@ -4,7 +4,8 @@ import { PagesModule } from './pages/pages.module';
 import { ValidationService } from './validation.service';
 const routes: Routes = [
   { path: '', redirectTo: 'routing/emp-list', pathMatch: 'full' },
-  { path: 'routing', loadChildren: './pages/pages.module#PagesModule' }
+  { path: 'routing', loadChildren: './pages/pages.module#PagesModule' },
+  { path: '**', redirectTo: 'routing/emp-list', pathMatch: 'full' }
 ];
 
 @NgModule({
