@@ -24,7 +24,6 @@ export class ITableComponent implements OnInit, AfterViewInit, OnChanges {
   tableLength: number;
   constructor(private iTableSharedFunctionService: ITableSharedFunctionService) { }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('change triggered');
     //  to detect changes when the record deleted
     if (changes && this.startEndArrayState && this.tableData) {
       this.filterTableData = null;
@@ -40,7 +39,6 @@ export class ITableComponent implements OnInit, AfterViewInit, OnChanges {
    * Function is also triggered after applying filter to the data
    */
   arrayRange(startEndArray: number[], fromFilter?: string) {
-    console.log(startEndArray);
     this.startEndArrayState = startEndArray;
     if (!this.filterTableData) {
       this.tempDataTable =  this.tableData.filter((x, i) => i >= startEndArray[0] && i < startEndArray[1] ? true : false);
@@ -48,7 +46,6 @@ export class ITableComponent implements OnInit, AfterViewInit, OnChanges {
         this.containerComponent.buttonsAfterFilter(this.tableData.length);
       }
     } else {
-      console.log('from filter');
       this.tempDataTable =  this.filterTableData.filter((x, i) => i >= startEndArray[0] && i < startEndArray[1] ? true : false);
       if (fromFilter ===  'fromFilter') {
         this.containerComponent.buttonsAfterFilter(this.filterTableData.length);

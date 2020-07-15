@@ -970,7 +970,6 @@ export class InMemoryDataService implements InMemoryDbService {
   // if the heroes array is not empty, the method below returns the highest
   // hero id + 1.
   genId(heroes: EmpDetails[]): number {
-    console.log(heroes.map((hero) => hero.id));
     return heroes.length > 0
       ? Math.max(...heroes.map((hero) => hero.id)) + 1
       : 1;

@@ -63,7 +63,6 @@ export class EmpDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(queryParams => {
-      console.log(queryParams);
       if (queryParams.orderType === 'update') {
         this.empDetailsService.fetchAndPopulateEmployeeDetails(Number(queryParams.id));
       } else if (queryParams.orderType === 'add') {

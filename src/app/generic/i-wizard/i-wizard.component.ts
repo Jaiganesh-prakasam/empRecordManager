@@ -25,7 +25,6 @@ export class IWizardComponent implements OnInit, AfterViewInit {
       const navElement = document.getElementById('nav-' + i.id);
       const buttonElement = document.getElementById('button-' + i.id);
       if (i.id === selectedStep) {
-        // console.log(i);
         contentElement.style.display = 'block';
         buttonElement.style.display = 'block';
         navElement.classList.remove('actual-dot-incomplete');
@@ -34,7 +33,6 @@ export class IWizardComponent implements OnInit, AfterViewInit {
         buttonSelected = true;
         continue;
       } else {
-        // console.log(i);
         contentElement.style.display = 'none';
         buttonElement.style.display = 'none';
       }
@@ -50,7 +48,6 @@ export class IWizardComponent implements OnInit, AfterViewInit {
   otherStepValidityChecker(toStepId: string): void {
     const currentPageIndex = this.tabData.findIndex((data) => data.id === this.selectedStep);
     const toPageIndex = this.tabData.findIndex((data) => data.id === toStepId);
-    console.log(currentPageIndex , toPageIndex);
     // to navigate to some previous page or to the immediate next page
     if (currentPageIndex > toPageIndex || (currentPageIndex + 1 === toPageIndex)) {
       this.wizardNavSelector(toStepId);

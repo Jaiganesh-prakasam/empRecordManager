@@ -40,7 +40,6 @@ export class EmpExperienceComponent implements OnInit {
   }
 
   experienceCalculation(from , to) {
-    // console.log(from , to);
     if (from && to) {
       from = moment(from);
       to = moment(to);

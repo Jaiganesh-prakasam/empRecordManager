@@ -69,12 +69,10 @@ export class EmpListComponent implements OnInit {
     this.router.navigate(['/routing/emp-details'], { queryParams: { orderType: 'add' } });
   }
   updateEmployee(id: number): void {
-    // console.log(id);
     this.router.navigate(['/routing/emp-details'], { queryParams: { orderType: 'update', id  } });
   }
   deleteEmployee(id): void {
     this.employeeFetchDetailsService.deleteEmployee(id).subscribe((data) => {
-      console.log(data);
       this.fetchEmployee();
     });
   }

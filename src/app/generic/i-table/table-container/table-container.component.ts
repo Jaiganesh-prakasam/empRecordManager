@@ -10,7 +10,6 @@ export class TableContainerComponent implements OnInit {
   @Input() settings: any;
   @Output() sortFieldName = new EventEmitter();
   constructor(public iTableSharedFunctionService: ITableSharedFunctionService) {
-    console.log(this.settings);
   }
 
   ngOnInit(): void {

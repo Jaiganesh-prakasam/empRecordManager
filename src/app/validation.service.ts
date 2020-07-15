@@ -13,7 +13,6 @@ export class ValidationService {
       const diffMs = Date.now() - dob.getTime();
       const  ageDt = new Date(diffMs);
       const age = Math.abs(ageDt.getUTCFullYear() - 1970);
-      console.log(age > 18 && age < 80);
       return age > 18 && age < 80 ? null : {invalidAge: true};
     };
   }
@@ -28,7 +27,6 @@ export class ValidationService {
       const emailMatch = control.value.match(
         /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
       );
-      // console.log(emailMatch);
       return emailMatch ? null : {invalidEmailAddress: true};
     };
   }
@@ -37,7 +35,6 @@ export class ValidationService {
       const phoneMatch = control.value.match(
         /^[0-9]{3}\-[0-9]{3}\-[0-9]{4}$/
         );
-      // console.log(phoneMatch);
       return phoneMatch ? null : {invalidPhoneNumber: true};
     };
   }
@@ -59,7 +56,6 @@ export class ValidationService {
       const urlMatch = control.value.match(
         /^[A-za-z0-9]+\/[A-za-z0-9]{1}[A-za-z0-9]*$/
         );
-      // console.log(urlMatch);
       return urlMatch ? null : {socialMediaUrlMatch: false};
     };
   }
@@ -67,7 +63,6 @@ export class ValidationService {
     return (control: AbstractControl): ValidationErrors | null => {
       //  store the current value, this will execute after typeValidator
       this.typeValidatorArray = [...control.value];
-      // console.log(this.typeValidatorArray);
       return null;
     };
   }
@@ -75,19 +70,16 @@ export class ValidationService {
     return (control: AbstractControl): ValidationErrors | null => {
       const currentDate = new Date().getTime();
       const enteredDate = new Date(control.value).getTime();
-      // console.log(this.typeValidatorArray);
       return currentDate < enteredDate ? {futureDate: true} : null;
     };
   }
   static rating(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const rateValue = control.value;
-      // console.log(this.typeValidatorArray);
       return rateValue <= 10 ? null : {rateGreaterThanTen: true};
     };
   }
   public getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
-    // console.log(validatorValue);
     const config = {
       required: 'Required',
       pattern: 'not a required pattern',

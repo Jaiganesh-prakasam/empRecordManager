@@ -50,7 +50,6 @@ export class EmpDetailsService {
   fetchAndPopulateEmployeeDetails(id: number): void {
     this.employeeFetchDetailsService.getEmployee(id)
       .subscribe((data) => {
-        console.log(data);
         this.empGeneral.patchValue(data.empGeneral);
         // this.empContact.email.patchValue(data.empContact);
         data.empSkill.forEach((element, i) => {
@@ -160,15 +159,11 @@ export class EmpDetailsService {
     const enteredRole = this.empExperienceArray.controls[index].get('role').value;
     this.roleList = [];
     if (enteredRole.length > 2) {
-      console.log(enteredRole);
       this.roleList = this.searchFromArray(this.role, enteredRole);
-      console.log(this.role);
-      console.log(this.roleList);
     }
   }
   storeNewRole(index): void {
     const enteredRole = this.empExperienceArray.controls[index].get('role').value;
-    console.log(enteredRole);
     if (!this.role.includes(enteredRole)) {
       this.role.push(enteredRole);
     }
@@ -196,7 +191,6 @@ export class EmpDetailsService {
   }
   storeNewSkill(index): void {
     const enteredSkill = this.empSkillArray.controls[index].get('skill').value;
-    // console.log(enteredRole);
     if (enteredSkill && !this.skillList.includes(enteredSkill)) {
       this.skillList.push(enteredSkill);
     }
@@ -214,7 +208,6 @@ export class EmpDetailsService {
   formValidation(): void {
     let count = 0;
     if (this.empGeneral.invalid) {
-      console.log('Employee general detils invalid');
       this.errorFormArray.push('Employee general detils invalid');
       count ++;
     }
@@ -223,17 +216,14 @@ export class EmpDetailsService {
       this.empContact.get('phone').invalid ||
       this.socialInfo.invalid
       ) {
-      console.log('Employee contacts invalid');
       this.errorFormArray.push('Employee contacts invalid');
       count++;
     }
     if (this.empExperienceArray.invalid) {
-      console.log('Employee experienceinvalid');
       this.errorFormArray.push('Employee experience invalid');
       count++;
     }
     if (this.empSkillArray.invalid) {
-      console.log('Employee skills invalid');
       this.errorFormArray.push('Employee skills invalid');
       count++;
     }
@@ -249,7 +239,6 @@ export class EmpDetailsService {
     }
     this.empDetails.value.empGeneral.dob = this.datePipe.transform(this.empDetails.value.empGeneral.dob, 'yyyy-MM-dd' );
     this.employeeFetchDetailsService.addEmployee(this.empDetails.value as EmpDetails).subscribe(employee => {
-        console.log(employee);
         this.router.navigate(['/routing/emp-list']);
     });
   }
