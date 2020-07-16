@@ -1,15 +1,17 @@
 import { Component, OnInit, Input, AfterViewInit, ContentChildren, QueryList } from '@angular/core';
 import { IWizardStepsComponent } from './i-wizard-steps/i-wizard-steps.component';
+import { IWizardService } from './i-wizard.service';
 @Component({
   // tslint:disable-next-line: component-selector
   selector: 'i-wizard',
   templateUrl: './i-wizard.component.html',
-  styleUrls: ['./i-wizard.component.scss']
+  styleUrls: ['./i-wizard.component.scss'],
+  providers: [IWizardService]
 })
 export class IWizardComponent implements OnInit, AfterViewInit {
   @Input() selectedStep: string;
   @Input() tabData: any[];
-  constructor() { }
+  constructor(public iWizardService: IWizardService) { }
 
   ngOnInit(): void {
 
@@ -22,8 +24,8 @@ export class IWizardComponent implements OnInit, AfterViewInit {
     let buttonSelected = false;
     for ( const i of this.tabData) {
       const contentElement = document.getElementById(i.id);
-      const navElement = document.getElementById('nav-' + i.id);
-      const buttonElement = document.getElementById('button-' + i.id);
+      const navElement = document.getElementById( this.iWizardService.uuid + '-nav-' + i.id);
+      const buttonElement = document.getElementById(this.iWizardService.uuid + '-button-' + i.id);
       if (i.id === selectedStep) {
         contentElement.style.display = 'block';
         buttonElement.style.display = 'block';
@@ -44,6 +46,7 @@ export class IWizardComponent implements OnInit, AfterViewInit {
         navElement.classList.add('actual-dot-complete');
       }
     }
+    document.getElementById(this.iWizardService.uuid + '-top-navigation-span').scrollIntoView();
   }
   otherStepValidityChecker(toStepId: string): void {
     const currentPageIndex = this.tabData.findIndex((data) => data.id === this.selectedStep);

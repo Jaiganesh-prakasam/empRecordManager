@@ -21,14 +21,14 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
   totalDivisions;
   pageNumberSelected: number;
   initialLoad = true;
-  constructor() {
+  constructor(public iTableSharedFunctionService: ITableSharedFunctionService) {
    }
 
   ngOnInit(): void {
 
   }
   ngAfterViewInit(): void {
-    (document.getElementById('rows') as HTMLInputElement).value = this.numberOfRows;
+    (document.getElementById(this.iTableSharedFunctionService.uuid + '-rows') as HTMLInputElement).value = this.numberOfRows;
     this.valueChanged(this.numberOfRows);
   }
 
@@ -37,8 +37,9 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
     this.numberOfButtons(Number(tempNumberOfRows));
   }
   numberOfButtons(tempNumberOfRows: number): void {
-    if (this.pageNumberSelected && document.getElementById(String(this.pageNumberSelected))) {
-      document.getElementById(String(this.pageNumberSelected)).classList.remove('active');
+    let selectedPageId = this.iTableSharedFunctionService.uuid + '-' + this.pageNumberSelected;
+    if (this.pageNumberSelected && document.getElementById(selectedPageId)) {
+      document.getElementById(selectedPageId).classList.remove('active');
     }
     const noOfPges = Math.ceil(this.totalRecordsSize / tempNumberOfRows);
     setTimeout(function() {
@@ -46,20 +47,23 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
       // table will be initated only after emitting the array range
       this.itemFromTo.emit([0, tempNumberOfRows]);
       this.pageNumberSelected = 1;
-      setTimeout(() => document.getElementById('1').classList.add('active'));
+      selectedPageId = this.iTableSharedFunctionService.uuid + '-1';
+      setTimeout(() => document.getElementById(selectedPageId).classList.add('active'));
     }.bind(this), 0);
   }
   // following function is triggered only from the parent using view child
-  buttonsAfterFilter(totalRecordcount: number) {
-    if (this.pageNumberSelected && document.getElementById(String(this.pageNumberSelected))) {
-      document.getElementById(String(this.pageNumberSelected)).classList.remove('active');
+  buttonsAfterFilter(totalRecordcount: number): void {
+    let selectedPageId = this.iTableSharedFunctionService.uuid + '-' + this.pageNumberSelected;
+    if (this.pageNumberSelected && document.getElementById(selectedPageId)) {
+      document.getElementById(selectedPageId).classList.remove('active');
     }
-    const tempNumberOfRows = (document.getElementById('rows') as HTMLInputElement).value;
+    const tempNumberOfRows = (document.getElementById(this.iTableSharedFunctionService.uuid + '-rows') as HTMLInputElement).value;
     const noOfPges = Math.ceil(totalRecordcount / Number(tempNumberOfRows));
     setTimeout(function() {
       this.totalDivisions = new Array(noOfPges);
       this.pageNumberSelected = 1;
-      setTimeout(() => document.getElementById('1') ? document.getElementById('1').classList.add('active') : null );
+      selectedPageId = this.iTableSharedFunctionService.uuid + '-1';
+      setTimeout(() => document.getElementById(selectedPageId) ? document.getElementById(selectedPageId).classList.add('active') : null );
     }.bind(this), 0);
   }
   jumpToFirst(): void {
@@ -91,14 +95,16 @@ export class PaginationContainerComponent implements OnInit, AfterViewInit {
     }
   }
   jumToThisPage(pageNumber: number): void {
-    document.getElementById(String(this.pageNumberSelected)).classList.remove('active');
+    const previousSelectedPageId = this.iTableSharedFunctionService.uuid + '-' + this.pageNumberSelected;
+    document.getElementById(previousSelectedPageId).classList.remove('active');
     this.pageNumberSelected = pageNumber;
     this.itemFromTo.emit([(pageNumber - 1) * Number(this.numberOfRows), pageNumber * Number(this.numberOfRows)]);
+    const currentSelectedPageId = this.iTableSharedFunctionService.uuid + '-' + pageNumber;
     // To add the class after the button is actually added by the program
-    setTimeout(() => document.getElementById(String(this.pageNumberSelected)).classList.add('active'));
+    setTimeout(() => document.getElementById(currentSelectedPageId).classList.add('active'));
   }
 
-  searchFilter(x) {
+  searchFilter(x): void {
     this.searchString.emit(x);
   }
 }

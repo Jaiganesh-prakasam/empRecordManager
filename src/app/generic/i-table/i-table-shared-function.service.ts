@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-
+import { v4 as uuidv4 } from 'uuid';
 @Injectable()
 export class ITableSharedFunctionService {
-
+  uuid = uuidv4();
   constructor(private datePipe: DatePipe) { }
   mutiValueCombination(
     data: object,
